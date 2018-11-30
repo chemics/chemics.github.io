@@ -154,10 +154,12 @@
            <div itemprop="articleBody">
             
   <h1>Source code for chemics.gas_viscosity</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mu_gas&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mu_gas&#39;</span><span class="p">,</span> <span class="s1">&#39;mu_gas_mix&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="mu_gas"><a class="viewcode-back" href="../../gas-viscosity.html#chemics.gas_viscosity.mu_gas">[docs]</a><span class="k">def</span> <span class="nf">mu_gas</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">cas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -252,6 +254,46 @@
 
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Gas viscosity for </span><span class="si">{formula}</span><span class="s1"> is not available.&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="mu_gas_mix"><a class="viewcode-back" href="../../gas-viscosity.html#chemics.gas_viscosity.mu_gas_mix">[docs]</a><span class="k">def</span> <span class="nf">mu_gas_mix</span><span class="p">(</span><span class="n">mix</span><span class="p">,</span> <span class="n">tk</span><span class="p">,</span> <span class="n">wts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Viscosity of a gas mixture calculated as a weighted mean.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mix : list of str</span>
+<span class="sd">        Components of the gas mixture</span>
+<span class="sd">    tk : float</span>
+<span class="sd">        Temperature of the gas mixture [K]</span>
+<span class="sd">    wts : list of float</span>
+<span class="sd">        Weight fraction of each gas component, sums to 1.0</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mu_mix : float</span>
+<span class="sd">        Viscosity of a gas mixture [micropoise]</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; mu_gas_mix([&#39;H2&#39;, &#39;N2&#39;], 773.15, [0.8, 0.2])</span>
+<span class="sd">    216.5786</span>
+
+<span class="sd">    &gt;&gt;&gt; mu_gas_mix([&#39;H2&#39;, &#39;N2&#39;, &#39;CH4&#39;], 773.15, [0.4, 0.1, 0.5])</span>
+<span class="sd">    221.9620</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mix</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wts</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of components in mixture must be same as weights&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">wts</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Weights must sum to 1.0&#39;</span><span class="p">)</span>
+
+    <span class="n">mu_gases</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">gas</span> <span class="ow">in</span> <span class="n">mix</span><span class="p">:</span>
+        <span class="n">mu</span> <span class="o">=</span> <span class="n">mu_gas</span><span class="p">(</span><span class="n">gas</span><span class="p">,</span> <span class="n">tk</span><span class="p">)</span>
+        <span class="n">mu_gases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+
+    <span class="n">mu_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">mu_gases</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">wts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mu_mix</span></div>
 
 
 <span class="k">def</span> <span class="nf">_mu</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">formula</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">cas</span><span class="p">,</span> <span class="n">full</span><span class="p">):</span>
