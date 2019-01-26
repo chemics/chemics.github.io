@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>chemics.gas_density &mdash; Chemics 0.0.1 documentation</title>
+  <title>chemics.transport_velocity &mdash; Chemics 0.0.1 documentation</title>
   
 
   
@@ -144,7 +144,7 @@
         
           <li><a href="../index.html">Module code</a> &raquo;</li>
         
-      <li>chemics.gas_density</li>
+      <li>chemics.transport_velocity</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -159,34 +159,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for chemics.gas_density</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="rhog"><a class="viewcode-back" href="../../gas_density.html#chemics.gas_density.rhog">[docs]</a><span></span><span class="k">def</span> <span class="nf">rhog</span><span class="p">(</span><span class="n">mw</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">tk</span><span class="p">):</span>
+  <h1>Source code for chemics.transport_velocity</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="utr"><a class="viewcode-back" href="../../transport_velocity.html#chemics.transport_velocity.utr">[docs]</a><span></span><span class="k">def</span> <span class="nf">utr</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">rhog</span><span class="p">,</span> <span class="n">rhos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculate gas density from molecular weight, pressure, and temperature.</span>
+<span class="sd">    Determine the transport velocity of particles in a circulating fluidized</span>
+<span class="sd">    bed riser. Based on Equation 2 in article by Zhang et al. [1]_.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    mw : float</span>
-<span class="sd">        Molecular weight of gas [g/mol]</span>
-<span class="sd">    p : float</span>
-<span class="sd">        Pressure of the gas [Pa]</span>
-<span class="sd">    tk : float</span>
-<span class="sd">        Temperature of the gas [K]</span>
+<span class="sd">    dp : float</span>
+<span class="sd">        Diameter of particle [m]</span>
+<span class="sd">    mu : float</span>
+<span class="sd">        Viscosity of gas [kg/(m s)]</span>
+<span class="sd">    rhog : float</span>
+<span class="sd">        Density of gas [kg/m^3]</span>
+<span class="sd">    rhos : float</span>
+<span class="sd">        Density of solid particle [kg/m^3]</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    rho : float</span>
-<span class="sd">        Density of gas [kg/m^3]</span>
+<span class="sd">    utr : float</span>
+<span class="sd">        Transport velocity [m/s]</span>
 
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; rhog(28, 101325, 773)</span>
-<span class="sd">    0.4414</span>
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; utr(0.0005, 3.6e-5, 0.44, 1630)</span>
+<span class="sd">    26.0617</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] H.L. Zhang, J. Degreve, R. Dewil, and J. Baeyens. Operation diagram</span>
+<span class="sd">        of Circulating Fluidized Beds (CFBs). Procedia Engineering, 102,</span>
+<span class="sd">        pp. 1092-1103, 2015.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">mw</span> <span class="o">=</span> <span class="n">mw</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># convert g/mol to kg/mol</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="mf">8.3145</span>      <span class="c1"># ideal gas constant in units of (m^3 Pa)/(K mol)</span>
-    <span class="n">rho</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">mw</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">tk</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rho</span></div>
+    <span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>                                    <span class="c1"># gravity acceleraton [m/s^2]</span>
+    <span class="n">ar</span> <span class="o">=</span> <span class="p">((</span><span class="n">dp</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">rhog</span><span class="o">*</span><span class="p">(</span><span class="n">rhos</span><span class="o">-</span><span class="n">rhog</span><span class="p">)</span><span class="o">*</span><span class="n">g</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">mu</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>   <span class="c1"># Archimedes number [-]</span>
+    <span class="n">utr</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span><span class="o">/</span><span class="p">(</span><span class="n">dp</span><span class="o">*</span><span class="n">rhog</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mf">3.23</span> <span class="o">+</span> <span class="mf">0.23</span><span class="o">*</span><span class="n">ar</span><span class="p">)</span>       <span class="c1"># transport velocity [m/s]</span>
+    <span class="k">return</span> <span class="n">utr</span></div>
 </pre></div>
 
            </div>

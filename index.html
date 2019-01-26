@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Conversions" href="conversions.html" /> 
+    <link rel="next" title="Atomic Elements" href="atomic_elements.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -86,12 +86,18 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements.html">Elements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gas-density.html">Gas density</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gas-thermal-conductivity.html">Gas thermal conductivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gas-viscosity.html">Gas viscosity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="molecular-weight.html">Molecular weight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
 </ul>
 
             
@@ -158,9 +164,10 @@
             
   <div class="section" id="chemics">
 <h1>Chemics<a class="headerlink" href="#chemics" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference external" href="https://github.com/chemics/chemics">Chemics</a> Python package is a collection of functions for conducting
-calculations in the field of chemical engineering. Source code for the package
-is available on <a class="reference external" href="https://github.com/chemics/chemics">GitHub</a> and contributions from the community are encouraged.</p>
+<p>The <a class="reference external" href="https://github.com/chemics/chemics">Chemics</a> package is collection of Python functions for conducting
+calculations in the field of chemical and fluidization engineering. Source code
+for the package is available on <a class="reference external" href="https://github.com/chemics/chemics">GitHub</a> and contributions from the community are
+encouraged.</p>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://www.anaconda.com">Anaconda</a> distribution of Python is recommended for scientific computing.
@@ -172,28 +179,49 @@ with the pip package manager:</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>Functions in the Chemics package are called with the usual dot syntax for
-accessing module features. The example below imports the Chemics package then
-uses the <code class="code docutils literal notranslate"><span class="pre">rhog()</span></code> function to calculate the density of a gas based on its
-molecular weight, pressure, and temperature.</p>
+<p>The example below imports the Chemics package then uses the <code class="code docutils literal notranslate"><span class="pre">rhog()</span></code>
+function to calculate the density of a gas based on its molecular weight,
+pressure, and temperature.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="kn">as</span> <span class="nn">cm</span>
 <span class="n">cm</span><span class="o">.</span><span class="n">rhog</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">170100</span><span class="p">,</span> <span class="mi">773</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>An example of calculating the terminal velocity of a particle according to the
+Haider and Levenspiel 1989 paper is shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="kn">as</span> <span class="nn">cm</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="mf">0.00016</span>    <span class="c1"># particle diameter [m]</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">1.8e-5</span>     <span class="c1"># gas viscosity [kg/(m s)]</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="mf">0.67</span>      <span class="c1"># particle sphericity [-]</span>
+<span class="n">rhog</span> <span class="o">=</span> <span class="mf">1.2</span>      <span class="c1"># gas density [kg/m^3]</span>
+<span class="n">rhos</span> <span class="o">=</span> <span class="mi">2600</span>     <span class="c1"># particle density [kg/m^3]</span>
+
+<span class="c1"># Haider and Levenspiel terminal velocity [m/s]</span>
+<span class="n">ut_haider</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ut_haider</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">rhog</span><span class="p">,</span> <span class="n">rhos</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>More examples are available in the <a class="reference external" href="https://github.com/chemics/chemics-examples">chemics-examples</a> repository.</p>
 </div>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
-<p>Details about the functions available in the Chemics package are provided at the
-pages listed below. Equations and associated references used to develop the
-functions are also given.</p>
+<p>Details about the functions available in the Chemics package are provided below.
+Equations and associated references used to develop the functions are also
+given.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements.html">Elements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gas-density.html">Gas density</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gas-thermal-conductivity.html">Gas thermal conductivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gas-viscosity.html">Gas viscosity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="molecular-weight.html">Molecular weight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
 </ul>
 </div>
 </div>
@@ -220,7 +248,7 @@ Chemics package.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="conversions.html" class="btn btn-neutral float-right" title="Conversions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="atomic_elements.html" class="btn btn-neutral float-right" title="Atomic Elements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -230,7 +258,7 @@ Chemics package.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Gavin Wiggins
+        &copy; Copyright 2019, Gavin Wiggins
 
     </p>
   </div>

@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Minimum fluidization velocity &mdash; Chemics 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Molecular weight" href="molecular_weight.html" />
+    <link rel="prev" title="Gas viscosity" href="gas_viscosity.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Minimum fluidization velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Chemics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Minimum fluidization velocity</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/minimum_fluidization_velocity.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="minimum-fluidization-velocity">
+<h1>Minimum fluidization velocity<a class="headerlink" href="#minimum-fluidization-velocity" title="Permalink to this headline">¶</a></h1>
+<p>For a bed of particles, the minimum fluidization velocity is the gas velocity at
+which the drag force of the upward moving gas equals the weight of the
+particles. As discussed in Chapter 3 of the Kunnii and Levenspiel book, the
+minimum fluidization velocity (<span class="math notranslate nohighlight">\(u_{mf}\)</span>) can be calculated from the
+equation shown below. This formula is based on the Ergun pressure drop equation
+for a bed of particles.</p>
+<div class="math notranslate nohighlight">
+\[\frac{1.75}{\epsilon_{mf}^3 \phi} \left( \frac{d_p u_{mf} \rho_g}{\mu} \right)^2 + \frac{150(1-\epsilon_{mf})}{\epsilon_{mf}^3 \phi^2} \left( \frac{d_p u_{mf} \rho_g}{\mu} \right) = \frac{d_p^3 \rho_g (\rho_s - \rho_g) g}{\mu^2}\]</div>
+<p>The above equation can be written in terms of the Reynolds and Archimedes
+numbers as follows</p>
+<div class="math notranslate nohighlight">
+\[\frac{1.75}{\epsilon_{mf}^3 \phi} Re_{p, mf}^2 + \frac{150 (1 - \epsilon_{mf})}{\epsilon_{mf}^3 \phi^2} Re_{p, mf} = Ar\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[Ar = \frac{d_p^3 \rho_g (\rho_s - \rho_g) g}{\mu^2}\]</div>
+<div class="math notranslate nohighlight">
+\[Re_{p,mf} = \frac{d_p u_{mf} \rho_g}{\mu}\]</div>
+<p>Kunii and Levenspiel further simplify the equation to the following form</p>
+<div class="math notranslate nohighlight">
+\[K_1 Re_{p,mf}^2 + K_2 Re_{p,mf} = Ar\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[K_1 = \frac{1.75}{\epsilon_{mf}^3 \phi}\]</div>
+<div class="math notranslate nohighlight">
+\[K_2 = \frac{150(1-\epsilon_{mf})}{\epsilon_{mf}^3 \phi^2}\]</div>
+<p>Solving for the Reynolds number provides</p>
+<div class="math notranslate nohighlight">
+\[Re_{p,mf} = \left( a^2 + b Ar \right)^{1/2} - a\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[a = \frac{K_2}{2 K_1}\]</div>
+<div class="math notranslate nohighlight">
+\[b = \frac{1}{K_1}\]</div>
+<p>Finally, the minimum fluidization velocity can be calculated from the above
+Reynolds number as</p>
+<div class="math notranslate nohighlight">
+\[u_{mf} = \frac{Re_{p,mf} \mu}{d_p \rho_g}\]</div>
+<p>For very small particles where Re &lt; 20, the above equation can be simplified to</p>
+<div class="math notranslate nohighlight">
+\[u_{mf} = \frac{d_p^2 (\rho_s - \rho_g) g}{150 \mu} \frac{\epsilon_{mf}^3 \phi^2}{1 - \epsilon_{mf}}\]</div>
+<p>and for large particles where Re &gt; 1000, the following equation can be used</p>
+<div class="math notranslate nohighlight">
+\[u_{mf}^2 = \frac{d_p (\rho_s - \rho_g) g}{175 \rho_g} \epsilon_{mf}^3 \phi\]</div>
+<p>When void fraction and sphericity are not known, values for <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span> from Table 4 in Chapter 3 of Kunii and Levenspiel can be used to
+estimate <span class="math notranslate nohighlight">\(u_{mf}\)</span>.</p>
+<div class="section" id="nomenclature">
+<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> - dimensionless constants (-)</div>
+<div class="line"><span class="math notranslate nohighlight">\(Ar\)</span> - Archimedes number (-)</div>
+<div class="line"><span class="math notranslate nohighlight">\(d_p\)</span> - Particle diameter (m)</div>
+<div class="line"><span class="math notranslate nohighlight">\(\epsilon_{mf}\)</span> - Bed void fraction at minimum fluidizing conditions (-)</div>
+<div class="line"><span class="math notranslate nohighlight">\(g\)</span> - Acceleration due to gravity, 9.81 m/s²</div>
+<div class="line"><span class="math notranslate nohighlight">\(K_1\)</span>, <span class="math notranslate nohighlight">\(K_2\)</span> - dimensionless constants (-)</div>
+<div class="line"><span class="math notranslate nohighlight">\(\mu\)</span> - Gas viscosity (kg/(m s))</div>
+<div class="line"><span class="math notranslate nohighlight">\(\phi\)</span> - Sphericity of a particle (-)</div>
+<div class="line"><span class="math notranslate nohighlight">\(\rho_g\)</span> - Gas density (kg/m³)</div>
+<div class="line"><span class="math notranslate nohighlight">\(\rho_s\)</span> - Solid particle density (kg/m³)</div>
+</div>
+</div>
+<div class="section" id="module-chemics.minimum_fluidization_velocity">
+<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.minimum_fluidization_velocity" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="chemics.minimum_fluidization_velocity.umf_coeff">
+<code class="descclassname">chemics.minimum_fluidization_velocity.</code><code class="descname">umf_coeff</code><span class="sig-paren">(</span><em>dp</em>, <em>mu</em>, <em>rhog</em>, <em>rhos</em>, <em>coeff='wenyu'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_coeff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine minimum fluidization velocity using experimental coefficients from
+Wen and Yu, Richardson, Saxena and Vogel, Babu, Grace, and Chitester. This
+approach can be used when bed void fraction and particle sphericity are not
+known. Refer to Equation 25 and Table 4 in Chapter 3 of Kunii and Levenspiel
+<a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dp</strong> (<em>float</em>) – Diameter of bed particle [m]</li>
+<li><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/(m s)]</li>
+<li><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m³]</li>
+<li><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m³]</li>
+<li><strong>coeff</strong> (<em>string</em>) – Keyword to determine which coefficients to use for umf calculation.
+Valid options are ‘wenyu’, ‘rich’, ‘sax’, ‘babu’, ‘grace’, and ‘chit’.
+Default coefficients are set to ‘wenyu’.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_coeff</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="s1">&#39;rich&#39;</span><span class="p">)</span>
+<span class="go">0.1192</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
+Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="chemics.minimum_fluidization_velocity.umf_ergun">
+<code class="descclassname">chemics.minimum_fluidization_velocity.</code><code class="descname">umf_ergun</code><span class="sig-paren">(</span><em>dp</em>, <em>ep</em>, <em>mu</em>, <em>phi</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_ergun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_ergun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine minimum fluidization velocity from particle and gas properties.
+This approach is based on the Ergun pressure drop equation for a bed of
+particles. Refer to Equations 18 and 19 in Chapter 3 of Kunii and Levenspiel
+<a class="footnote-reference" href="#id4" id="id3">[2]</a>,</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dp</strong> (<em>float</em>) – Diameter of bed particle [m]</li>
+<li><strong>ep</strong> (<em>float</em>) – Void fraction of the bed [-]</li>
+<li><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/ms]</li>
+<li><strong>phi</strong> (<em>float</em>) – Sphericity of bed particle [-]</li>
+<li><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m³]</li>
+<li><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m³]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_ergun</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
+<span class="go">0.1488</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
+Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="chemics.minimum_fluidization_velocity.umf_reynolds">
+<code class="descclassname">chemics.minimum_fluidization_velocity.</code><code class="descname">umf_reynolds</code><span class="sig-paren">(</span><em>dp</em>, <em>ep</em>, <em>mu</em>, <em>phi</em>, <em>re</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_reynolds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_reynolds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate minimum fluidization velocity for very small particles where
+Reynolds number &lt; 20 and for very large particles where Reynolds number &gt;
+1000. See Equations 21 and 22 in Chapter 3 of Kunii and Levenspiel <a class="footnote-reference" href="#id6" id="id5">[3]</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dp</strong> (<em>float</em>) – Diameter of bed particle [m]</li>
+<li><strong>ep</strong> (<em>float</em>) – Void fraction [-]</li>
+<li><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/ms]</li>
+<li><strong>phi</strong> (<em>float</em>) – Sphericity of bed particle [-]</li>
+<li><strong>re</strong> (<em>float</em>) – Reynolds number where Re &lt; 20 or Re &gt; 1000 [-]</li>
+<li><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m³]</li>
+<li><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m³]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<p>For small Reynolds number where Re = 19</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_reynolds</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
+<span class="go">0.1513</span>
+</pre></div>
+</div>
+<p>For large Reynolds number where Re = 1001</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_reynolds</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
+<span class="go">1.1545</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
+Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="molecular_weight.html" class="btn btn-neutral float-right" title="Molecular weight" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gas_viscosity.html" class="btn btn-neutral" title="Gas viscosity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gavin Wiggins
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

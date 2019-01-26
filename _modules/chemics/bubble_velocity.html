@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>chemics.gas_density &mdash; Chemics 0.0.1 documentation</title>
+  <title>chemics.bubble_velocity &mdash; Chemics 0.0.1 documentation</title>
   
 
   
@@ -144,7 +144,7 @@
         
           <li><a href="../index.html">Module code</a> &raquo;</li>
         
-      <li>chemics.gas_density</li>
+      <li>chemics.bubble_velocity</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -159,34 +159,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for chemics.gas_density</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="rhog"><a class="viewcode-back" href="../../gas_density.html#chemics.gas_density.rhog">[docs]</a><span></span><span class="k">def</span> <span class="nf">rhog</span><span class="p">(</span><span class="n">mw</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">tk</span><span class="p">):</span>
+  <h1>Source code for chemics.bubble_velocity</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="ubr"><a class="viewcode-back" href="../../bubble_velocity.html#chemics.bubble_velocity.ubr">[docs]</a><span class="k">def</span> <span class="nf">ubr</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculate gas density from molecular weight, pressure, and temperature.</span>
+<span class="sd">    Rise velocity of single bubbles in a fluidized bed from Equations 5.3 and</span>
+<span class="sd">    5.4 in Kunii and Levenspiel book [1]_.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    mw : float</span>
-<span class="sd">        Molecular weight of gas [g/mol]</span>
-<span class="sd">    p : float</span>
-<span class="sd">        Pressure of the gas [Pa]</span>
-<span class="sd">    tk : float</span>
-<span class="sd">        Temperature of the gas [K]</span>
+<span class="sd">    db : float</span>
+<span class="sd">        Diameter of sphere having same volume as spherical cap bubble,</span>
+<span class="sd">        referred to as the effective bubble diameter [m]</span>
+<span class="sd">    dt : float</span>
+<span class="sd">        Bed or tube diameter [m]</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    rho : float</span>
-<span class="sd">        Density of gas [kg/m^3]</span>
+<span class="sd">    ubr : float</span>
+<span class="sd">        Rise velocity of single bubbles in fluidized bed [m/s]</span>
 
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; rhog(28, 101325, 773)</span>
-<span class="sd">    0.4414</span>
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; ubr(0.05, 0.6)</span>
+<span class="sd">    0.4979</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Daizo Kunii and Octave Levenspiel. Fluidization Engineering.</span>
+<span class="sd">           Butterworth-Heinemann, 2nd edition, 1991.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">mw</span> <span class="o">=</span> <span class="n">mw</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># convert g/mol to kg/mol</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="mf">8.3145</span>      <span class="c1"># ideal gas constant in units of (m^3 Pa)/(K mol)</span>
-    <span class="n">rho</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">mw</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">tk</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rho</span></div>
+    <span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>    <span class="c1"># acceleration of gravity [m/s^2]</span>
+
+    <span class="k">if</span> <span class="n">db</span> <span class="o">/</span> <span class="n">dt</span> <span class="o">&lt;</span> <span class="mf">0.125</span><span class="p">:</span>
+        <span class="n">ubr</span> <span class="o">=</span> <span class="mf">0.711</span> <span class="o">*</span> <span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="n">db</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="mf">0.125</span> <span class="o">&lt;=</span> <span class="n">db</span> <span class="o">/</span> <span class="n">dt</span> <span class="o">&lt;</span> <span class="mf">0.6</span><span class="p">:</span>
+        <span class="n">ubr</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.711</span> <span class="o">*</span> <span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="n">db</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.49</span> <span class="o">*</span> <span class="n">db</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Bed is considered slugging at db/dt &gt; 0.6&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ubr</span></div>
 </pre></div>
 
            </div>

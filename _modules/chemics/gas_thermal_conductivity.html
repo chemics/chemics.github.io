@@ -85,12 +85,18 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic_elements.html">Atomic Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bubble_velocity.html">Bubble velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../conversions.html">Conversions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Elements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gas-density.html">Gas density</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gas-thermal-conductivity.html">Gas thermal conductivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gas-viscosity.html">Gas viscosity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../molecular-weight.html">Molecular weight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gas_density.html">Gas density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../molecular_weight.html">Molecular weight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../terminal_velocity.html">Terminal velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../transport_velocity.html">Transport velocity</a></li>
 </ul>
 
             
@@ -158,7 +164,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 
 
-<div class="viewcode-block" id="k_gas_inorganic"><a class="viewcode-back" href="../../gas-thermal-conductivity.html#chemics.gas_thermal_conductivity.k_gas_inorganic">[docs]</a><span class="k">def</span> <span class="nf">k_gas_inorganic</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="k_gas_inorganic"><a class="viewcode-back" href="../../gas_thermal_conductivity.html#chemics.gas_thermal_conductivity.k_gas_inorganic">[docs]</a><span class="k">def</span> <span class="nf">k_gas_inorganic</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Thermal conductivity of gas as a function of temperature. Applicable to gas</span>
 <span class="sd">    comprised of inorganic compounds. Results based on coefficients from Yaws&#39;</span>
@@ -239,7 +245,7 @@
         <span class="k">return</span> <span class="n">k_gas</span></div>
 
 
-<div class="viewcode-block" id="k_gas_organic"><a class="viewcode-back" href="../../gas-thermal-conductivity.html#chemics.gas_thermal_conductivity.k_gas_organic">[docs]</a><span class="k">def</span> <span class="nf">k_gas_organic</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">cas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="k_gas_organic"><a class="viewcode-back" href="../../gas_thermal_conductivity.html#chemics.gas_thermal_conductivity.k_gas_organic">[docs]</a><span class="k">def</span> <span class="nf">k_gas_organic</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">cas</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Thermal conductivity of gas as a function of temperature. Applicable to gas</span>
 <span class="sd">    comprised of organic compounds. Results based on coefficients from Yaws&#39;</span>
@@ -339,7 +345,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Gavin Wiggins
+        &copy; Copyright 2019, Gavin Wiggins
 
     </p>
   </div>

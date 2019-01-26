@@ -85,12 +85,18 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../atomic_elements.html">Atomic Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bubble_velocity.html">Bubble velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../conversions.html">Conversions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Elements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gas-density.html">Gas density</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gas-thermal-conductivity.html">Gas thermal conductivity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../gas-viscosity.html">Gas viscosity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../molecular-weight.html">Molecular weight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gas_density.html">Gas density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../molecular_weight.html">Molecular weight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../terminal_velocity.html">Terminal velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../transport_velocity.html">Transport velocity</a></li>
 </ul>
 
             
@@ -157,7 +163,7 @@
 <span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">.elements</span> <span class="k">import</span> <span class="n">elements</span>
+<span class="kn">from</span> <span class="nn">.atomic_elements</span> <span class="k">import</span> <span class="n">atomic_elements</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;molecular_weight&#39;</span><span class="p">,</span> <span class="s1">&#39;mw_mix&#39;</span><span class="p">]</span>
 
@@ -218,15 +224,15 @@
         <span class="n">end</span> <span class="o">=</span> <span class="n">_find_end</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
         <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_parse</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">end</span><span class="p">],</span> <span class="p">[]))</span>
         <span class="k">return</span> <span class="n">_parse</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">stack</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
-        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s1">&#39;atomic_weight&#39;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">atomic_elements</span><span class="p">:</span>
+        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atomic_elements</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s1">&#39;atomic_weight&#39;</span><span class="p">])</span>
     <span class="k">elif</span> <span class="n">t</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
         <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">_parse</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">stack</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="molecular_weight"><a class="viewcode-back" href="../../molecular-weight.html#chemics.molecular_weight.molecular_weight">[docs]</a><span class="k">def</span> <span class="nf">molecular_weight</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
+<div class="viewcode-block" id="molecular_weight"><a class="viewcode-back" href="../../molecular_weight.html#chemics.molecular_weight.molecular_weight">[docs]</a><span class="k">def</span> <span class="nf">molecular_weight</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Tokenize a molecular formula to determine total molecular weight.</span>
 <span class="sd">    Calculation is based on atomic weight values from IUPAC [1]_.</span>
@@ -263,7 +269,7 @@
     <span class="k">return</span> <span class="n">mw</span></div>
 
 
-<div class="viewcode-block" id="mw_mix"><a class="viewcode-back" href="../../molecular-weight.html#chemics.molecular_weight.mw_mix">[docs]</a><span class="k">def</span> <span class="nf">mw_mix</span><span class="p">(</span><span class="n">mix</span><span class="p">,</span> <span class="n">wts</span><span class="p">):</span>
+<div class="viewcode-block" id="mw_mix"><a class="viewcode-back" href="../../molecular_weight.html#chemics.molecular_weight.mw_mix">[docs]</a><span class="k">def</span> <span class="nf">mw_mix</span><span class="p">(</span><span class="n">mix</span><span class="p">,</span> <span class="n">wts</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Molecular weight of a gas mixture calculated as a weighted mean.</span>
 
@@ -311,7 +317,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Gavin Wiggins
+        &copy; Copyright 2019, Gavin Wiggins
 
     </p>
   </div>

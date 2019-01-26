@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; Chemics 0.0.1 documentation</title>
+  <title>Gas density &mdash; Chemics 0.0.1 documentation</title>
   
 
   
@@ -28,7 +28,9 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Gas thermal conductivity" href="gas_thermal_conductivity.html" />
+    <link rel="prev" title="Conversions" href="conversions.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -67,7 +69,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -84,19 +86,14 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic Elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
 </ul>
 
             
@@ -142,12 +139,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Gas density</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/gas_density.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -159,24 +158,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="gas-density">
+<h1>Gas density<a class="headerlink" href="#gas-density" title="Permalink to this headline">¶</a></h1>
+<p>The density of a gas can be calculated using its molecular weight, pressure, and
+temperature as shown below:</p>
+<div class="math notranslate nohighlight">
+\[\rho_{gas} = \frac{P \cdot MW}{R \cdot T}\]</div>
+<div class="section" id="nomenclature">
+<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(\rho_{gas}\)</span> - Density of gas (kg/m³)</div>
+<div class="line"><span class="math notranslate nohighlight">\(P\)</span> - Pressure of the gas (Pa)</div>
+<div class="line"><span class="math notranslate nohighlight">\(MW\)</span> - Molecular weight of the gas (g/mol)</div>
+<div class="line"><span class="math notranslate nohighlight">\(R\)</span> - Gas constant as 8.3145 [(m³ Pa)/(K mol)]</div>
+<div class="line"><span class="math notranslate nohighlight">\(T\)</span> - Temperature of the gas (K)</div>
+</div>
+</div>
+<div class="section" id="module-chemics.gas_density">
+<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.gas_density" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="chemics.gas_density.rhog">
+<code class="descclassname">chemics.gas_density.</code><code class="descname">rhog</code><span class="sig-paren">(</span><em>mw</em>, <em>p</em>, <em>tk</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_density.html#rhog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_density.rhog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate gas density from molecular weight, pressure, and temperature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mw</strong> (<em>float</em>) – Molecular weight of gas [g/mol]</li>
+<li><strong>p</strong> (<em>float</em>) – Pressure of the gas [Pa]</li>
+<li><strong>tk</strong> (<em>float</em>) – Temperature of the gas [K]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>rho</strong> (<em>float</em>) – Density of gas [kg/m^3]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rhog</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">101325</span><span class="p">,</span> <span class="mi">773</span><span class="p">)</span>
+<span class="go">0.4414</span>
+</pre></div>
+</div>
+</dd></dl>
 
-  
-  <div id="search-results">
-  
-  </div>
+</div>
+</div>
+
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gas_thermal_conductivity.html" class="btn btn-neutral float-right" title="Gas thermal conductivity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="conversions.html" class="btn btn-neutral" title="Conversions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -209,7 +252,6 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/javascript" src="_static/searchtools.js"></script>
     
 
   
@@ -220,14 +262,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>

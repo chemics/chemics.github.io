@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Gas density &mdash; Chemics 0.0.1 documentation</title>
+  <title>Bed expansion factor &mdash; Chemics 0.0.1 documentation</title>
   
 
   
@@ -28,9 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Gas thermal conductivity" href="gas-thermal-conductivity.html" />
-    <link rel="prev" title="Elements" href="elements.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -86,10 +84,10 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="elements.html">Elements</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Gas density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas-density.html">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas-thermal-conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas-viscosity.html">Gas viscosity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="molecular-weight.html">Molecular weight</a></li>
@@ -138,13 +136,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Gas density</li>
+      <li>Bed expansion factor</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/gas-density.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/bed_expansion_factor.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -157,49 +155,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="gas-density">
-<h1>Gas density<a class="headerlink" href="#gas-density" title="Permalink to this headline">¶</a></h1>
-<p>The density of a gas can be calculated using its molecular weight, pressure, and
-temperature as shown below:</p>
+  <div class="section" id="bed-expansion-factor">
+<h1>Bed expansion factor<a class="headerlink" href="#bed-expansion-factor" title="Permalink to this headline">¶</a></h1>
+<p>The bed expansion factor can be used to estimate the expanded bed height of a
+bubbling fluidized bed reactor. Two equations are given in the Souza-Santos book
+based on the diameter of the bed.</p>
+<p>For <span class="math notranslate nohighlight">\(d_D &lt; 0.0635\)</span> m:</p>
 <div class="math notranslate nohighlight">
-\[\rho_{gas} = \frac{P \cdot MW}{R \cdot T}\]</div>
+\[f_{bexp} = 1 + \frac{1.032\,(U-U_{mf})^{0.57}\;\rho_{GA}^{0.083}}{\rho_p^{0.166}\,U_{mf}^{0.063}\,d_D^{0.445}}\]</div>
+<p>For <span class="math notranslate nohighlight">\(d_D \geq 0.0635\)</span> m:</p>
+<div class="math notranslate nohighlight">
+\[f_{bexp} = 1 + \frac{14.314\,(U-U_{mf})^{0.738}\;d_p^{1.006}\,\rho_p^{0.376}}{\rho_{GA}^{0.126}\;U_{mf}^{0.937}}\]</div>
 <div class="section" id="nomenclature">
 <h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
-<div class="line"><span class="math notranslate nohighlight">\(\rho_{gas}\)</span> - Density of gas (kg/m³)</div>
-<div class="line"><span class="math notranslate nohighlight">\(P\)</span> - Pressure of the gas (Pa)</div>
-<div class="line"><span class="math notranslate nohighlight">\(MW\)</span> - Molecular weight of the gas (g/mol)</div>
-<div class="line"><span class="math notranslate nohighlight">\(R\)</span> - Gas constant as 8.3145 [(m³ Pa)/(K mol)]</div>
-<div class="line"><span class="math notranslate nohighlight">\(T\)</span> - Temperature of the gas (K)</div>
+<div class="line"><span class="math notranslate nohighlight">\(d_D\)</span> - Diameter of the bed (m)</div>
+<div class="line"><span class="math notranslate nohighlight">\(d_p\)</span> - Diameter of the bed particle (m)</div>
+<div class="line"><span class="math notranslate nohighlight">\(f_{bexp}\)</span> - Bed expansion factor (-)</div>
+<div class="line"><span class="math notranslate nohighlight">\(\rho_{GA}\)</span> - Gas density (kg/m³)</div>
+<div class="line"><span class="math notranslate nohighlight">\(\rho_p\)</span> - Particle density (kg/m³)</div>
+<div class="line"><span class="math notranslate nohighlight">\(U\)</span> - Gas superficial velocity (m/s)</div>
+<div class="line"><span class="math notranslate nohighlight">\(U_{mf}\)</span> - Minimimum fluidization velocity (m/s)</div>
 </div>
 </div>
-<div class="section" id="module-chemics.gas_density">
-<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.gas_density" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-chemics.bed_expansion_factor">
+<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.bed_expansion_factor" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="chemics.gas_density.rhog">
-<code class="descclassname">chemics.gas_density.</code><code class="descname">rhog</code><span class="sig-paren">(</span><em>mw</em>, <em>p</em>, <em>tk</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_density.html#rhog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_density.rhog" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate gas density from molecular weight, pressure, and temperature.</p>
+<dt id="chemics.bed_expansion_factor.fbexp">
+<code class="descclassname">chemics.bed_expansion_factor.</code><code class="descname">fbexp</code><span class="sig-paren">(</span><em>db</em>, <em>dp</em>, <em>rhog</em>, <em>rhos</em>, <em>umf</em>, <em>us</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/bed_expansion_factor.html#fbexp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.bed_expansion_factor.fbexp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bed expansion factor for calculating expanded bed height of a bubbling
+fluidized bed reactor. See equations 14.7 and 14.8 in Souza-Santos <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mw</strong> (<em>float</em>) – Molecular weight of gas [g/mol]</li>
-<li><strong>p</strong> (<em>float</em>) – Pressure of the gas [Pa]</li>
-<li><strong>tk</strong> (<em>float</em>) – Temperature of the gas [K]</li>
+<li><strong>db</strong> (<em>float</em>) – Diameter of the bed [m]</li>
+<li><strong>dp</strong> (<em>float</em>) – Diameter of the bed particle [m]</li>
+<li><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m^3]</li>
+<li><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m^3]</li>
+<li><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</li>
+<li><strong>us</strong> (<em>float</em>) – Superficial gas velocity [m/s]</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>rho</strong> (<em>float</em>) – Density of gas [kg/m^3]</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>fbx</strong> (<em>float</em>) – Bed expansion factor [-]</p>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rhog</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">101325</span><span class="p">,</span> <span class="mi">773</span><span class="p">)</span>
-<span class="go">0.4414</span>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf</span> <span class="o">=</span> <span class="mf">0.1157</span>
+<span class="gp">... </span><span class="n">us</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">*</span><span class="n">umf</span>
+<span class="gp">... </span><span class="n">fbexp</span><span class="p">(</span><span class="mf">0.05232</span><span class="p">,</span> <span class="mf">0.0004</span><span class="p">,</span> <span class="mf">0.4413</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="mf">0.1157</span><span class="p">,</span> <span class="n">us</span><span class="p">)</span>
+<span class="go">1.4864</span>
 </pre></div>
 </div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Marcio de Souza-Santos. Solid Fuels Combustion and Gasification:
+Modeling, Simulation, and Equipment Operations. CRC Press, Taylor and
+Francis Group, 2nd edition, 2010.</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -210,15 +230,6 @@ temperature as shown below:</p>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="gas-thermal-conductivity.html" class="btn btn-neutral float-right" title="Gas thermal conductivity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="elements.html" class="btn btn-neutral" title="Elements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

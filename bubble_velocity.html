@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bubble velocity &mdash; Chemics 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conversions" href="conversions.html" />
+    <link rel="prev" title="Bed expansion factor" href="bed_expansion_factor.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bubble velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Chemics</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Bubble velocity</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/bubble_velocity.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bubble-velocity">
+<h1>Bubble velocity<a class="headerlink" href="#bubble-velocity" title="Permalink to this headline">¶</a></h1>
+<p>As stated in the Kunii and Levenspiel book, the bubble rise velocity in a dense
+bed can be calculated as</p>
+<div class="math notranslate nohighlight">
+\[u_{br} = 0.711(g d_b)^{1/2} \quad \text{where} \quad d_b/d_t &lt; 0.125\]</div>
+<p>Wall effects can slow the rise of bubbles when <span class="math notranslate nohighlight">\(d_b/d_t &gt; 0.125\)</span>;
+as such, the rise velocity is calculated as</p>
+<div class="math notranslate nohighlight">
+\[u_{br} = \left[0.711(g d_b)^{1/2}\right]1.2\,exp\left(-1.49
+\frac{d_b}{d_t}\right) \quad \text{where} \quad 0.125 &lt; d_b/d_t &lt; 0.6\]</div>
+<p>For conditions where <span class="math notranslate nohighlight">\(d_b/d_t &gt; 0.6\)</span>, the fluidized bed is considered to
+be slugging.</p>
+<div class="section" id="nomenclature">
+<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(d_b\)</span> - Diameter of sphere having same volume as spherical cap bubble, effective bubble diameter (m)</div>
+<div class="line"><span class="math notranslate nohighlight">\(d_t\)</span> - Bed or tube diameter (m)</div>
+<div class="line"><span class="math notranslate nohighlight">\(g\)</span> - Acceleration due to gravity, 9.81 m/s²</div>
+<div class="line"><span class="math notranslate nohighlight">\(u_{br}\)</span> - Rise velocity of single bubbles in a fluidized bed (m/s)</div>
+</div>
+</div>
+<div class="section" id="module-chemics.bubble_velocity">
+<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.bubble_velocity" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="chemics.bubble_velocity.ubr">
+<code class="descclassname">chemics.bubble_velocity.</code><code class="descname">ubr</code><span class="sig-paren">(</span><em>db</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/bubble_velocity.html#ubr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.bubble_velocity.ubr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rise velocity of single bubbles in a fluidized bed from Equations 5.3 and
+5.4 in Kunii and Levenspiel book <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>db</strong> (<em>float</em>) – Diameter of sphere having same volume as spherical cap bubble,
+referred to as the effective bubble diameter [m]</li>
+<li><strong>dt</strong> (<em>float</em>) – Bed or tube diameter [m]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ubr</strong> (<em>float</em>) – Rise velocity of single bubbles in fluidized bed [m/s]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ubr</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
+<span class="go">0.4979</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
+Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="conversions.html" class="btn btn-neutral float-right" title="Conversions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bed_expansion_factor.html" class="btn btn-neutral" title="Bed expansion factor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gavin Wiggins
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
