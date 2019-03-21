@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Atomic elements &mdash; Chemics 19.03 documentation</title>
+  <title>Devolatilization time &mdash; Chemics 19.03 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bed expansion factor" href="bed_expansion_factor.html" />
-    <link rel="prev" title="Chemics" href="index.html" /> 
+    <link rel="next" title="Gas density" href="gas_density.html" />
+    <link rel="prev" title="Conversions" href="conversions.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,12 +87,12 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Atomic elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="devol_time.html">Devolatilization time</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Devolatilization time</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
@@ -145,7 +145,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Atomic elements</li>
+      <li>Devolatilization time</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -162,11 +162,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="atomic-elements">
-<h1>Atomic elements<a class="headerlink" href="#atomic-elements" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="code docutils literal notranslate"><span class="pre">atomic_elements</span></code> dictionary contains atomic number, name, and atomic
-weight of elements in the periodic table. Conventional atomic weight is used for
-atomic weight where applicable based on values taken from IUPAC.</p>
+  <div class="section" id="devolatilization-time">
+<h1>Devolatilization time<a class="headerlink" href="#devolatilization-time" title="Permalink to this headline">¶</a></h1>
+<p>Correlation for 95% devolatilization time for wood particles. Based on
+experiments with beech wood cyclinders in a fluidized sand bed.</p>
+<div class="math notranslate nohighlight">
+\[t_v = 0.8\,e^{1525 / T_r} d^{1.2}\]</div>
+<div class="section" id="nomenclature">
+<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(t_v\)</span> - Time to 95% devolatilization (s)</div>
+<div class="line"><span class="math notranslate nohighlight">\(T_r\)</span> - Temperature of fluidized bed [K]</div>
+<div class="line"><span class="math notranslate nohighlight">\(d\)</span> - Diameter of wood particle [mm]</div>
+</div>
+</div>
+<div class="section" id="module-chemics.devol_time">
+<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.devol_time" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="chemics.devol_time.devol_time">
+<code class="descclassname">chemics.devol_time.</code><code class="descname">devol_time</code><span class="sig-paren">(</span><em>dp</em>, <em>tbed</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/devol_time.html#devol_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.devol_time.devol_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Correlation for 95% devolatilization time for wood particles. Refer to
+Equation 2 in the Di Blasi <a class="footnote-reference" href="#id2" id="id1">[1]</a> article which is based on beech wood
+cylinders in a fluidized sand bed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dp</strong> (<em>float</em><em> or </em><em>array</em>) – Diameter of biomass particle [mm]</li>
+<li><strong>tbed</strong> (<em>float</em><em> or </em><em>array</em>) – Bed temperature [K]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>tv</strong> (<em>float or array</em>) – Devolatilization time for 95% conversion [s]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">devol_time</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
+<span class="go">13.2114</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Colomba Di Blasi and Carmen Branca. Temperatures of Wood Particles
+in a Hot Sand Bed Fluidized by Nitrogen. Energy and Fuels, 17,
+pp. 247-254, 2003.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -177,10 +226,10 @@ atomic weight where applicable based on values taken from IUPAC.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="bed_expansion_factor.html" class="btn btn-neutral float-right" title="Bed expansion factor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gas_density.html" class="btn btn-neutral float-right" title="Gas density" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Chemics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="conversions.html" class="btn btn-neutral" title="Conversions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

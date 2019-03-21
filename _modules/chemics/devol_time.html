@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>chemics.transport_velocity &mdash; Chemics 19.03 documentation</title>
+  <title>chemics.devol_time &mdash; Chemics 19.03 documentation</title>
   
 
   
@@ -145,7 +145,7 @@
         
           <li><a href="../index.html">Module code</a> &raquo;</li>
         
-      <li>chemics.transport_velocity</li>
+      <li>chemics.devol_time</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -160,43 +160,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for chemics.transport_velocity</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="utr"><a class="viewcode-back" href="../../transport_velocity.html#chemics.transport_velocity.utr">[docs]</a><span></span><span class="k">def</span> <span class="nf">utr</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">rhog</span><span class="p">,</span> <span class="n">rhos</span><span class="p">):</span>
+  <h1>Source code for chemics.devol_time</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="devol_time"><a class="viewcode-back" href="../../devol_time.html#chemics.devol_time.devol_time">[docs]</a><span class="k">def</span> <span class="nf">devol_time</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">tbed</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Determine the transport velocity of particles in a circulating fluidized</span>
-<span class="sd">    bed riser. Based on Equation 2 in article by Zhang et al. [1]_.</span>
+<span class="sd">    Correlation for 95% devolatilization time for wood particles. Refer to</span>
+<span class="sd">    Equation 2 in the Di Blasi [1]_ article which is based on beech wood</span>
+<span class="sd">    cylinders in a fluidized sand bed.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    dp : float</span>
-<span class="sd">        Diameter of particle [m]</span>
-<span class="sd">    mu : float</span>
-<span class="sd">        Viscosity of gas [kg/(m s)]</span>
-<span class="sd">    rhog : float</span>
-<span class="sd">        Density of gas [kg/m^3]</span>
-<span class="sd">    rhos : float</span>
-<span class="sd">        Density of solid particle [kg/m^3]</span>
+<span class="sd">    dp : float or array</span>
+<span class="sd">        Diameter of biomass particle [mm]</span>
+<span class="sd">    tbed : float or array</span>
+<span class="sd">        Bed temperature [K]</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    utr : float</span>
-<span class="sd">        Transport velocity [m/s]</span>
+<span class="sd">    tv : float or array</span>
+<span class="sd">        Devolatilization time for 95% conversion [s]</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; utr(0.0005, 3.6e-5, 0.44, 1630)</span>
-<span class="sd">    26.0617</span>
+<span class="sd">    &gt;&gt;&gt; devol_time(2.0, 773.15)</span>
+<span class="sd">    13.2114</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] H.L. Zhang, J. Degreve, R. Dewil, and J. Baeyens. Operation diagram</span>
-<span class="sd">        of Circulating Fluidized Beds (CFBs). Procedia Engineering, 102,</span>
-<span class="sd">        pp. 1092-1103, 2015.</span>
+<span class="sd">    .. [1] Colomba Di Blasi and Carmen Branca. Temperatures of Wood Particles</span>
+<span class="sd">       in a Hot Sand Bed Fluidized by Nitrogen. Energy and Fuels, 17,</span>
+<span class="sd">       pp. 247-254, 2003.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>                                                <span class="c1"># gravity acceleraton [m/s^2]</span>
-    <span class="n">ar</span> <span class="o">=</span> <span class="p">((</span><span class="n">dp</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">rhog</span> <span class="o">*</span> <span class="p">(</span><span class="n">rhos</span> <span class="o">-</span> <span class="n">rhog</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mu</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># Archimedes number [-]</span>
-    <span class="n">utr</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span> <span class="o">/</span> <span class="p">(</span><span class="n">dp</span> <span class="o">*</span> <span class="n">rhog</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mf">3.23</span> <span class="o">+</span> <span class="mf">0.23</span> <span class="o">*</span> <span class="n">ar</span><span class="p">)</span>           <span class="c1"># transport velocity [m/s]</span>
-    <span class="k">return</span> <span class="n">utr</span></div>
+    <span class="n">tv</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1525</span> <span class="o">/</span> <span class="n">tbed</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">dp</span><span class="o">**</span><span class="mf">1.2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tv</span></div>
 </pre></div>
 
            </div>
