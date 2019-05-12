@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bed expansion factor &mdash; Chemics 19.5 documentation</title>
+  <title>Geldart particle classification &mdash; Chemics 19.5 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bubble velocity" href="bubble_velocity.html" />
-    <link rel="prev" title="Atomic elements" href="atomic_elements.html" /> 
+    <link rel="next" title="Minimum fluidization velocity" href="minimum_fluidization_velocity.html" />
+    <link rel="prev" title="Gas viscosity" href="gas_viscosity.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -88,7 +88,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
@@ -96,7 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geldart.html">Geldart particle classification</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Geldart particle classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
@@ -146,7 +146,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Bed expansion factor</li>
+      <li>Geldart particle classification</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,64 +163,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="bed-expansion-factor">
-<h1>Bed expansion factor<a class="headerlink" href="#bed-expansion-factor" title="Permalink to this headline">¶</a></h1>
-<p>The bed expansion factor can be used to estimate the expanded bed height of a
-bubbling fluidized bed reactor. Two equations are given in the Souza-Santos book
-based on the diameter of the bed.</p>
-<p>For <span class="math notranslate nohighlight">\(d_D &lt; 0.0635\)</span> m:</p>
-<div class="math notranslate nohighlight">
-\[f_{bexp} = 1 + \frac{1.032\,(U-U_{mf})^{0.57}\;\rho_{GA}^{0.083}}{\rho_p^{0.166}\,U_{mf}^{0.063}\,d_D^{0.445}}\]</div>
-<p>For <span class="math notranslate nohighlight">\(d_D \geq 0.0635\)</span> m:</p>
-<div class="math notranslate nohighlight">
-\[f_{bexp} = 1 + \frac{14.314\,(U-U_{mf})^{0.738}\;d_p^{1.006}\,\rho_p^{0.376}}{\rho_{GA}^{0.126}\;U_{mf}^{0.937}}\]</div>
-<div class="section" id="nomenclature">
-<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line"><span class="math notranslate nohighlight">\(d_D\)</span> - Diameter of the bed (m)</div>
-<div class="line"><span class="math notranslate nohighlight">\(d_p\)</span> - Diameter of the bed particle (m)</div>
-<div class="line"><span class="math notranslate nohighlight">\(f_{bexp}\)</span> - Bed expansion factor (-)</div>
-<div class="line"><span class="math notranslate nohighlight">\(\rho_{GA}\)</span> - Gas density (kg/m³)</div>
-<div class="line"><span class="math notranslate nohighlight">\(\rho_p\)</span> - Particle density (kg/m³)</div>
-<div class="line"><span class="math notranslate nohighlight">\(U\)</span> - Gas superficial velocity (m/s)</div>
-<div class="line"><span class="math notranslate nohighlight">\(U_{mf}\)</span> - Minimimum fluidization velocity (m/s)</div>
-</div>
-</div>
-<div class="section" id="module-chemics.bed_expansion_factor">
-<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.bed_expansion_factor" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="geldart-particle-classification">
+<h1>Geldart particle classification<a class="headerlink" href="#geldart-particle-classification" title="Permalink to this headline">¶</a></h1>
+<p>The behavior of solids fluidized by gases can be classified into four groups
+using the density difference and mean particle diameter. This particle
+classification was introduced by D. Geldart in 1973.</p>
+<div class="section" id="module-chemics.geldart">
+<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.geldart" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="chemics.bed_expansion_factor.fbexp">
-<code class="descclassname">chemics.bed_expansion_factor.</code><code class="descname">fbexp</code><span class="sig-paren">(</span><em>db</em>, <em>dp</em>, <em>rhog</em>, <em>rhos</em>, <em>umf</em>, <em>us</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/bed_expansion_factor.html#fbexp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.bed_expansion_factor.fbexp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bed expansion factor for calculating expanded bed height of a bubbling
-fluidized bed reactor. See equations 14.7 and 14.8 in Souza-Santos <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<dt id="chemics.geldart.plot_geldart">
+<code class="descclassname">chemics.geldart.</code><code class="descname">plot_geldart</code><span class="sig-paren">(</span><em>dp</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/geldart.html#plot_geldart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.geldart.plot_geldart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a plot of the Geldart particle classification diagram <a class="footnote-reference brackets" href="#id3" id="id1">1</a>. Group AC
+and A’ regions were digitized from a graph in the Khawaja paper <a class="footnote-reference brackets" href="#id4" id="id2">2</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>db</strong> (<em>float</em>) – Diameter of the bed [m]</p></li>
-<li><p><strong>dp</strong> (<em>float</em>) – Diameter of the bed particle [m]</p></li>
-<li><p><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m^3]</p></li>
-<li><p><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m^3]</p></li>
-<li><p><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p></li>
-<li><p><strong>us</strong> (<em>float</em>) – Superficial gas velocity [m/s]</p></li>
+<li><p><strong>dp</strong> (<em>float</em>) – Sauter mean particle diameter [µm]</p></li>
+<li><p><strong>rhog</strong> (<em>float</em>) – Gas or liquid density [g/cm³]</p></li>
+<li><p><strong>rhos</strong> (<em>float</em>) – Solid density [g/cm³]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>fbx</strong> (<em>float</em>) – Bed expansion factor [-]</p>
+<dd class="field-even"><p><em>Displays a Matplotlib figure.</em></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf</span> <span class="o">=</span> <span class="mf">0.1157</span>
-<span class="gp">... </span><span class="n">us</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">*</span><span class="n">umf</span>
-<span class="gp">... </span><span class="n">fbexp</span><span class="p">(</span><span class="mf">0.05232</span><span class="p">,</span> <span class="mf">0.0004</span><span class="p">,</span> <span class="mf">0.4413</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="mf">0.1157</span><span class="p">,</span> <span class="n">us</span><span class="p">)</span>
-<span class="go">1.4864</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot_geldart</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mf">0.0012</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
 <dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Marcio de Souza-Santos. Solid Fuels Combustion and Gasification:
-Modeling, Simulation, and Equipment Operations. CRC Press, Taylor and
-Francis Group, 2nd edition, 2010.</p>
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>D. Geldart. Types of Gas Fluidization. Powder Technology, 7,
+pp. 285-292, 1973.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>H.A. Khawaja. Review of the phenomenon of fluidization and its
+numerical modelling techniques. The International Journal of
+Multiphysics, vol. 9, no. 4, pp. 397-407, 2015.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -236,10 +216,10 @@ Francis Group, 2nd edition, 2010.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="bubble_velocity.html" class="btn btn-neutral float-right" title="Bubble velocity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="minimum_fluidization_velocity.html" class="btn btn-neutral float-right" title="Minimum fluidization velocity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="atomic_elements.html" class="btn btn-neutral" title="Atomic elements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gas_viscosity.html" class="btn btn-neutral" title="Gas viscosity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Gas density &mdash; Chemics 19.3 documentation</title>
+  <title>Gas density &mdash; Chemics 19.5 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                19.3
+                19.5
               </div>
             
           
@@ -96,6 +96,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geldart.html">Geldart particle classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
@@ -184,22 +185,18 @@ temperature as shown below:</p>
 <dt id="chemics.gas_density.rhog">
 <code class="descclassname">chemics.gas_density.</code><code class="descname">rhog</code><span class="sig-paren">(</span><em>mw</em>, <em>p</em>, <em>tk</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_density.html#rhog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_density.rhog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate gas density from molecular weight, pressure, and temperature.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mw</strong> (<em>float</em>) – Molecular weight of gas [g/mol]</li>
-<li><strong>p</strong> (<em>float</em>) – Pressure of the gas [Pa]</li>
-<li><strong>tk</strong> (<em>float</em>) – Temperature of the gas [K]</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mw</strong> (<em>float</em>) – Molecular weight of gas [g/mol]</p></li>
+<li><p><strong>p</strong> (<em>float</em>) – Pressure of the gas [Pa]</p></li>
+<li><p><strong>tk</strong> (<em>float</em>) – Temperature of the gas [K]</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>rho</strong> (<em>float</em>) – Density of gas [kg/m^3]</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>rho</strong> (<em>float</em>) – Density of gas [kg/m^3]</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rhog</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">101325</span><span class="p">,</span> <span class="mi">773</span><span class="p">)</span>
 <span class="go">0.4414</span>
@@ -255,7 +252,8 @@ temperature as shown below:</p>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

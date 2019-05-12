@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bubble velocity &mdash; Chemics 19.3 documentation</title>
+  <title>Bubble velocity &mdash; Chemics 19.5 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                19.3
+                19.5
               </div>
             
           
@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geldart.html">Geldart particle classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
@@ -190,36 +191,31 @@ be slugging.</p>
 <dt id="chemics.bubble_velocity.ubr">
 <code class="descclassname">chemics.bubble_velocity.</code><code class="descname">ubr</code><span class="sig-paren">(</span><em>db</em>, <em>dt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/bubble_velocity.html#ubr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.bubble_velocity.ubr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rise velocity of single bubbles in a fluidized bed from Equations 5.3 and
-5.4 in Kunii and Levenspiel book <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>db</strong> (<em>float</em>) – Diameter of sphere having same volume as spherical cap bubble,
-referred to as the effective bubble diameter [m]</li>
-<li><strong>dt</strong> (<em>float</em>) – Bed or tube diameter [m]</li>
+5.4 in Kunii and Levenspiel book <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>db</strong> (<em>float</em>) – Diameter of sphere having same volume as spherical cap bubble,
+referred to as the effective bubble diameter [m]</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Bed or tube diameter [m]</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>ubr</strong> (<em>float</em>) – Rise velocity of single bubbles in fluidized bed [m/s]</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ubr</strong> (<em>float</em>) – Rise velocity of single bubbles in fluidized bed [m/s]</p>
+</dd>
+</dl>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ubr</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
 <span class="go">0.4979</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
-Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
+Butterworth-Heinemann, 2nd edition, 1991.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -270,7 +266,8 @@ Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

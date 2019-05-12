@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Minimum fluidization velocity &mdash; Chemics 19.3 documentation</title>
+  <title>Minimum fluidization velocity &mdash; Chemics 19.5 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Molecular weight" href="molecular_weight.html" />
-    <link rel="prev" title="Gas viscosity" href="gas_viscosity.html" /> 
+    <link rel="prev" title="Geldart particle classification" href="geldart.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                19.3
+                19.5
               </div>
             
           
@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geldart.html">Geldart particle classification</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Minimum fluidization velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
@@ -234,40 +235,35 @@ estimate <span class="math notranslate nohighlight">\(u_{mf}\)</span>.</p>
 Wen and Yu, Richardson, Saxena and Vogel, Babu, Grace, and Chitester. This
 approach can be used when bed void fraction and particle sphericity are not
 known. Refer to Equation 25 and Table 4 in Chapter 3 of Kunii and Levenspiel
-<a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dp</strong> (<em>float</em>) – Diameter of bed particle [m]</li>
-<li><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/(m s)]</li>
-<li><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m³]</li>
-<li><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m³]</li>
-<li><strong>coeff</strong> (<em>string</em>) – Keyword to determine which coefficients to use for umf calculation.
+<a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dp</strong> (<em>float</em>) – Diameter of bed particle [m]</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/(m s)]</p></li>
+<li><p><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m³]</p></li>
+<li><p><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m³]</p></li>
+<li><p><strong>coeff</strong> (<em>string</em>) – Keyword to determine which coefficients to use for umf calculation.
 Valid options are ‘wenyu’, ‘rich’, ‘sax’, ‘babu’, ‘grace’, and ‘chit’.
-Default coefficients are set to ‘wenyu’.</li>
+Default coefficients are set to ‘wenyu’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p>
+</dd>
+</dl>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_coeff</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="s1">&#39;rich&#39;</span><span class="p">)</span>
 <span class="go">0.1192</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
-Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
+Butterworth-Heinemann, 2nd edition, 1991.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -276,39 +272,34 @@ Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
 <dd><p>Determine minimum fluidization velocity from particle and gas properties.
 This approach is based on the Ergun pressure drop equation for a bed of
 particles. Refer to Equations 18 and 19 in Chapter 3 of Kunii and Levenspiel
-<a class="footnote-reference" href="#id4" id="id3">[2]</a>,</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dp</strong> (<em>float</em>) – Diameter of bed particle [m]</li>
-<li><strong>ep</strong> (<em>float</em>) – Void fraction of the bed [-]</li>
-<li><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/ms]</li>
-<li><strong>phi</strong> (<em>float</em>) – Sphericity of bed particle [-]</li>
-<li><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m³]</li>
-<li><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m³]</li>
+<a class="footnote-reference brackets" href="#id4" id="id3">2</a>,</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dp</strong> (<em>float</em>) – Diameter of bed particle [m]</p></li>
+<li><p><strong>ep</strong> (<em>float</em>) – Void fraction of the bed [-]</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/ms]</p></li>
+<li><p><strong>phi</strong> (<em>float</em>) – Sphericity of bed particle [-]</p></li>
+<li><p><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m³]</p></li>
+<li><p><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m³]</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p>
+</dd>
+</dl>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_ergun</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
 <span class="go">0.1488</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
-Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
+Butterworth-Heinemann, 2nd edition, 1991.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -316,27 +307,23 @@ Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
 <code class="descclassname">chemics.minimum_fluidization_velocity.</code><code class="descname">umf_reynolds</code><span class="sig-paren">(</span><em>dp</em>, <em>ep</em>, <em>mu</em>, <em>phi</em>, <em>re</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_reynolds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_reynolds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate minimum fluidization velocity for very small particles where
 Reynolds number &lt; 20 and for very large particles where Reynolds number &gt;
-1000. See Equations 21 and 22 in Chapter 3 of Kunii and Levenspiel <a class="footnote-reference" href="#id6" id="id5">[3]</a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dp</strong> (<em>float</em>) – Diameter of bed particle [m]</li>
-<li><strong>ep</strong> (<em>float</em>) – Void fraction [-]</li>
-<li><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/ms]</li>
-<li><strong>phi</strong> (<em>float</em>) – Sphericity of bed particle [-]</li>
-<li><strong>re</strong> (<em>float</em>) – Reynolds number where Re &lt; 20 or Re &gt; 1000 [-]</li>
-<li><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m³]</li>
-<li><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m³]</li>
+1000. See Equations 21 and 22 in Chapter 3 of Kunii and Levenspiel <a class="footnote-reference brackets" href="#id6" id="id5">3</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dp</strong> (<em>float</em>) – Diameter of bed particle [m]</p></li>
+<li><p><strong>ep</strong> (<em>float</em>) – Void fraction [-]</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/ms]</p></li>
+<li><p><strong>phi</strong> (<em>float</em>) – Sphericity of bed particle [-]</p></li>
+<li><p><strong>re</strong> (<em>float</em>) – Reynolds number where Re &lt; 20 or Re &gt; 1000 [-]</p></li>
+<li><p><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m³]</p></li>
+<li><p><strong>rhos</strong> (<em>float</em>) – Density of bed particle [kg/m³]</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>umf</strong> (<em>float</em>) – Minimum fluidization velocity [m/s]</p>
+</dd>
+</dl>
 <p class="rubric">Example</p>
 <p>For small Reynolds number where Re = 19</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_reynolds</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
@@ -349,13 +336,12 @@ Reynolds number &lt; 20 and for very large particles where Reynolds number &gt;
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
-Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dd><p>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
+Butterworth-Heinemann, 2nd edition, 1991.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -372,7 +358,7 @@ Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
         <a href="molecular_weight.html" class="btn btn-neutral float-right" title="Molecular weight" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gas_viscosity.html" class="btn btn-neutral" title="Gas viscosity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="geldart.html" class="btn btn-neutral" title="Geldart particle classification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -406,7 +392,8 @@ Butterworth-Heinemann, 2nd edition, 1991.</td></tr>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Transport velocity &mdash; Chemics 19.3 documentation</title>
+  <title>Transport velocity &mdash; Chemics 19.5 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                19.3
+                19.5
               </div>
             
           
@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geldart.html">Geldart particle classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
@@ -189,38 +190,33 @@ equation</p>
 <dt id="chemics.transport_velocity.utr">
 <code class="descclassname">chemics.transport_velocity.</code><code class="descname">utr</code><span class="sig-paren">(</span><em>dp</em>, <em>mu</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/transport_velocity.html#utr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.transport_velocity.utr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine the transport velocity of particles in a circulating fluidized
-bed riser. Based on Equation 2 in article by Zhang et al. <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dp</strong> (<em>float</em>) – Diameter of particle [m]</li>
-<li><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/(m s)]</li>
-<li><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m^3]</li>
-<li><strong>rhos</strong> (<em>float</em>) – Density of solid particle [kg/m^3]</li>
+bed riser. Based on Equation 2 in article by Zhang et al. <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dp</strong> (<em>float</em>) – Diameter of particle [m]</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/(m s)]</p></li>
+<li><p><strong>rhog</strong> (<em>float</em>) – Density of gas [kg/m^3]</p></li>
+<li><p><strong>rhos</strong> (<em>float</em>) – Density of solid particle [kg/m^3]</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>utr</strong> (<em>float</em>) – Transport velocity [m/s]</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>utr</strong> (<em>float</em>) – Transport velocity [m/s]</p>
+</dd>
+</dl>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">utr</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">1630</span><span class="p">)</span>
 <span class="go">26.0617</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>H.L. Zhang, J. Degreve, R. Dewil, and J. Baeyens. Operation diagram
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>H.L. Zhang, J. Degreve, R. Dewil, and J. Baeyens. Operation diagram
 of Circulating Fluidized Beds (CFBs). Procedia Engineering, 102,
-pp. 1092-1103, 2015.</td></tr>
-</tbody>
-</table>
+pp. 1092-1103, 2015.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -269,7 +265,8 @@ pp. 1092-1103, 2015.</td></tr>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

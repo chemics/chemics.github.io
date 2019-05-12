@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Gas viscosity &mdash; Chemics 19.3 documentation</title>
+  <title>Gas viscosity &mdash; Chemics 19.5 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Minimum fluidization velocity" href="minimum_fluidization_velocity.html" />
+    <link rel="next" title="Geldart particle classification" href="geldart.html" />
     <link rel="prev" title="Gas thermal conductivity" href="gas_thermal_conductivity.html" /> 
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                19.3
+                19.5
               </div>
             
           
@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gas viscosity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geldart.html">Geldart particle classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
@@ -190,26 +191,23 @@ function. Note that for a gas mixture, the sum of the components must equal 1.</
 <code class="descclassname">chemics.gas_viscosity.</code><code class="descname">mu_gas</code><span class="sig-paren">(</span><em>formula</em>, <em>temp</em>, <em>cas=None</em>, <em>full=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_gas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_gas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Viscosity of gas as a function of temperature. Results calculated from
 coefficients in Yaws’ Critical Property Data for Chemical Engineers and
-Chemists <a class="footnote-reference" href="#id2" id="id1">[1]</a>. CAS (Chemical Abstracts Service) number may be required for
+Chemists <a class="footnote-reference brackets" href="#id2" id="id1">1</a>. CAS (Chemical Abstracts Service) number may be required for
 some species.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>formula</strong> (<em>str</em>) – Molecular formula of the gas.</li>
-<li><strong>temp</strong> (<em>float</em>) – Temperature of the gas [K]</li>
-<li><strong>cas</strong> (<em>str</em><em>, </em><em>optional</em>) – CAS number of the gas, required for some species [-]</li>
-<li><strong>full</strong> (<em>bool</em><em>, </em><em>optional</em>) – When set to <code class="code docutils literal notranslate"><span class="pre">False</span></code> (default) just gas viscosity is returned.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formula</strong> (<em>str</em>) – Molecular formula of the gas.</p></li>
+<li><p><strong>temp</strong> (<em>float</em>) – Temperature of the gas [K]</p></li>
+<li><p><strong>cas</strong> (<em>str</em><em>, </em><em>optional</em>) – CAS number of the gas, required for some species [-]</p></li>
+<li><p><strong>full</strong> (<em>bool</em><em>, </em><em>optional</em>) – When set to <code class="code docutils literal notranslate"><span class="pre">False</span></code> (default) just gas viscosity is returned.
 When set to <code class="code docutils literal notranslate"><span class="pre">True</span></code> then return gas viscosity and other
-information.</li>
+information.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><ul>
-<li><p class="first"><strong>mu_gas</strong> (<em>float</em>) – Viscosity of gas [micropoise]</p>
-</li>
-<li><p class="first"><strong>mu_gas, cas, tmin, tmax, a, b, c, d</strong> (<em>tuple</em>) – Additional values are only returned when keyword <code class="code docutils literal notranslate"><span class="pre">full=True</span></code>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul>
+<li><p><strong>mu_gas</strong> (<em>float</em>) – Viscosity of gas [micropoise]</p></li>
+<li><p><strong>mu_gas, cas, tmin, tmax, a, b, c, d</strong> (<em>tuple</em>) – Additional values are only returned when keyword <code class="code docutils literal notranslate"><span class="pre">full=True</span></code>.</p>
 <div class="line-block">
 <div class="line">mu_gas - Viscosity of gas [micropoise]</div>
 <div class="line">cas - CAS number [-]</div>
@@ -219,16 +217,14 @@ information.</li>
 </li>
 </ul>
 </p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If gas formula is not found in csv data file.</li>
-<li><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If gas temperature is not in range between tmin and tmax.</li>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – If gas formula is not found in csv data file.</p></li>
+<li><p><strong>ValueError</strong> – If gas temperature is not in range between tmin and tmax.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;CH4&#39;</span><span class="p">,</span> <span class="mi">810</span><span class="p">)</span>
 <span class="go">234.21</span>
@@ -252,36 +248,31 @@ information.</li>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Carl L. Yaws. Viscosity Gas Tables 80 and 81 in Yaws’ Critical
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Carl L. Yaws. Viscosity Gas Tables 80 and 81 in Yaws’ Critical
 Property Data for Chemical Engineers and Chemists. Published by Knovel,
-2014.</td></tr>
-</tbody>
-</table>
+2014.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="chemics.gas_viscosity.mu_gas_mix">
 <code class="descclassname">chemics.gas_viscosity.</code><code class="descname">mu_gas_mix</code><span class="sig-paren">(</span><em>mix</em>, <em>tk</em>, <em>wts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_gas_mix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_gas_mix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Viscosity of a gas mixture calculated as a weighted mean.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mix</strong> (<em>list of str</em>) – Components of the gas mixture</li>
-<li><strong>tk</strong> (<em>float</em>) – Temperature of the gas mixture [K]</li>
-<li><strong>wts</strong> (<em>list of float</em>) – Weight fraction of each gas component, sums to 1.0</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mix</strong> (<em>list of str</em>) – Components of the gas mixture</p></li>
+<li><p><strong>tk</strong> (<em>float</em>) – Temperature of the gas mixture [K]</p></li>
+<li><p><strong>wts</strong> (<em>list of float</em>) – Weight fraction of each gas component, sums to 1.0</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>mu_mix</strong> (<em>float</em>) – Viscosity of a gas mixture [micropoise]</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mu_mix</strong> (<em>float</em>) – Viscosity of a gas mixture [micropoise]</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas_mix</span><span class="p">([</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="s1">&#39;N2&#39;</span><span class="p">],</span> <span class="mf">773.15</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
 <span class="go">216.5786</span>
@@ -304,7 +295,7 @@ Property Data for Chemical Engineers and Chemists. Published by Knovel,
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="minimum_fluidization_velocity.html" class="btn btn-neutral float-right" title="Minimum fluidization velocity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="geldart.html" class="btn btn-neutral float-right" title="Geldart particle classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="gas_thermal_conductivity.html" class="btn btn-neutral" title="Gas thermal conductivity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -341,7 +332,8 @@ Property Data for Chemical Engineers and Chemists. Published by Knovel,
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   
