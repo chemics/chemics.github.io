@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Geldart particle classification &mdash; Chemics 19.5.1 documentation</title>
+  <title>Geldart particle classification &mdash; Chemics 19.5.2 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.5.1
+                19.5.2
               </div>
             
           
@@ -174,35 +174,47 @@ classification was introduced by D. Geldart in 1973.</p>
 <div class="section" id="module-chemics.geldart">
 <span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.geldart" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="chemics.geldart.plot_geldart">
-<code class="descclassname">chemics.geldart.</code><code class="descname">plot_geldart</code><span class="sig-paren">(</span><em>dp</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/geldart.html#plot_geldart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.geldart.plot_geldart" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display a plot of the Geldart particle classification diagram <a class="footnote-reference brackets" href="#id3" id="id1">1</a>. Group AC
-and A’ regions were digitized from a graph in the Khawaja paper <a class="footnote-reference brackets" href="#id4" id="id2">2</a>.</p>
+<dt id="chemics.geldart.geldart_chart">
+<code class="descclassname">chemics.geldart.</code><code class="descname">geldart_chart</code><span class="sig-paren">(</span><em>dp</em>, <em>rhog</em>, <em>rhos</em>, <em>dpmin=None</em>, <em>dpmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/geldart.html#geldart_chart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.geldart.geldart_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creata a Matplotlib figure of the Geldart chart <a class="footnote-reference brackets" href="#id3" id="id1">1</a>. Data points for
+drawing the demarcation lines and regions were digitized from Figure 2 in
+<a class="footnote-reference brackets" href="#id4" id="id2">2</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dp</strong> (<em>float</em>) – Sauter mean particle diameter [µm]</p></li>
-<li><p><strong>rhog</strong> (<em>float</em>) – Gas or liquid density [g/cm³]</p></li>
-<li><p><strong>rhos</strong> (<em>float</em>) – Solid density [g/cm³]</p></li>
+<li><p><strong>rhog</strong> (<em>float</em>) – Gas density [g/cm³]</p></li>
+<li><p><strong>rhos</strong> (<em>float</em>) – Particle density [g/cm³]</p></li>
+<li><p><strong>dpmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum particle size from particle size distribution [µm]</p></li>
+<li><p><strong>dpmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Max particle size from particle size distribution [µm]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Displays a Matplotlib figure.</em></p>
+<dd class="field-even"><p><em>Matplotlib figure.</em></p>
 </dd>
 </dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plot_geldart</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mf">0.0012</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Particle diameter must be in microns (µm) and density in g/cm³.</p>
+</div>
+<p class="rubric">Examples</p>
+<p>For a single particle size</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geldart_figure</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For a particle size with min and max sizes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geldart_figure</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>D. Geldart. Types of Gas Fluidization. Powder Technology, 7,
-pp. 285-292, 1973.</p>
+<dd><p>D. Geldart. Types of gas fluidization. Powder Technology,
+7, pp. 285-292, 1973.</p>
 </dd>
 <dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>H.A. Khawaja. Review of the phenomenon of fluidization and its
-numerical modelling techniques. The International Journal of
+<dd><p>H.A. Khawaja. Review of the phenomenon of fluidization
+and its numerical modelling techniques. The International Journal of
 Multiphysics, vol. 9, no. 4, pp. 397-407, 2015.</p>
 </dd>
 </dl>
