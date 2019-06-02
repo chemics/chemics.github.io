@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Gas viscosity &mdash; Chemics 19.5.2 documentation</title>
+  <title>Gas viscosity &mdash; Chemics 19.6 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.5.2
+                19.6
               </div>
             
           
@@ -246,8 +246,7 @@ information.</p></li>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="mi">773</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="go">(363.823584708048, &#39;7727-37-9&#39;, 63.15, 1970.0, 4.46555763078484,</span>
-<span class="go">0.6381377897531589, -0.000265956278540745, 5.41126875437814e-08)</span>
+<span class="go">(363.82, &#39;7727-37-9&#39;, 63.15, 1970.0, 4.46, 0.63, -0.00026, 5.41e-08)</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
@@ -261,30 +260,99 @@ Property Data for Chemical Engineers and Chemists. Published by Knovel,
 </dd></dl>
 
 <dl class="function">
-<dt id="chemics.gas_viscosity.mu_gas_mix">
-<code class="descclassname">chemics.gas_viscosity.</code><code class="descname">mu_gas_mix</code><span class="sig-paren">(</span><em>mix</em>, <em>tk</em>, <em>wts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_gas_mix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_gas_mix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Viscosity of a gas mixture calculated as a weighted mean.</p>
+<dt id="chemics.gas_viscosity.mu_graham">
+<code class="descclassname">chemics.gas_viscosity.</code><code class="descname">mu_graham</code><span class="sig-paren">(</span><em>mus</em>, <em>xs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_graham"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_graham" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate viscosity of a gas mixture using Graham’s method <a class="footnote-reference brackets" href="#id5" id="id3">2</a>. Formula
+presented here is based on Equation 1 from the Davidson report <a class="footnote-reference brackets" href="#id6" id="id4">3</a>.</p>
+<div class="math notranslate nohighlight">
+\[\mu_{mix} = \sum (x_i \cdot \mu_i)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_{mix}\)</span> is viscosity of the gas mixture, <span class="math notranslate nohighlight">\(x_i\)</span> is
+mole fraction [-] of each component, and <span class="math notranslate nohighlight">\(\mu_i\)</span> is gas viscosity of
+each component.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mix</strong> (<em>list of str</em>) – Components of the gas mixture</p></li>
-<li><p><strong>tk</strong> (<em>float</em>) – Temperature of the gas mixture [K]</p></li>
-<li><p><strong>wts</strong> (<em>list of float</em>) – Weight fraction of each gas component, sums to 1.0</p></li>
+<li><p><strong>mus</strong> (<em>list</em><em>, </em><em>tuple</em><em>, or </em><em>array</em>) – Viscosity of each gas component.</p></li>
+<li><p><strong>xs</strong> (<em>list</em><em>, </em><em>tuple</em><em>, or </em><em>array</em>) – Mole fraction of each gas component [-]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mu_mix</strong> (<em>float</em>) – Viscosity of a gas mixture [micropoise]</p>
+<dd class="field-even"><p><strong>mu</strong> (<em>float</em>) – Gas viscosity of the mixture. Units are same as input viscosity.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If sum of mole fractions does not equal 1.0</p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas_mix</span><span class="p">([</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="s1">&#39;N2&#39;</span><span class="p">],</span> <span class="mf">773.15</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
-<span class="go">216.5786</span>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_h2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">mu_n2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">mu_graham</span><span class="p">([</span><span class="n">mu_h2</span><span class="p">,</span> <span class="n">mu_n2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">])</span>
+<span class="go">207.37</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas_mix</span><span class="p">([</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="s1">&#39;CH4&#39;</span><span class="p">],</span> <span class="mf">773.15</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
-<span class="go">221.9620</span>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>Thomas Graham. On the Motion of Gases. Philosophical Transactions of
+the Royal Society of London, vol. 136, pp. 573-631, 1846.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>Thomas Davidson. A Simple and Accurate Method for Calculating
+Viscosity of Gaseous Mixtures. United States Department of the Interior:
+Report of Investigations 9456, 1993.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="chemics.gas_viscosity.mu_herning">
+<code class="descclassname">chemics.gas_viscosity.</code><code class="descname">mu_herning</code><span class="sig-paren">(</span><em>mus</em>, <em>mws</em>, <em>xs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_herning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_herning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate viscosity of a gas mixture using the approach by Herning and
+Zipperer <a class="footnote-reference brackets" href="#id9" id="id7">4</a>. Formula presented here is based on Equation 1 from the
+Davidson report <a class="footnote-reference brackets" href="#id10" id="id8">5</a>.</p>
+<div class="math notranslate nohighlight">
+\[\mu_{mix} = \frac{\sum (\mu_i \cdot x_i \cdot \sqrt{MW_i})}{\sum (x_i \cdot \sqrt{MW_i})}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_{mix}\)</span> is viscosity of the gas mixture, <span class="math notranslate nohighlight">\(x_i\)</span> is
+mole fraction [-] of each component, <span class="math notranslate nohighlight">\(\mu_i\)</span> is gas viscosity of
+each component, and <span class="math notranslate nohighlight">\(MW_i\)</span> is the molecular weight [g/mol] of each
+component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mus</strong> (<em>list</em><em>, </em><em>tuple</em><em>, or </em><em>array</em>) – Viscosity of each gas component.</p></li>
+<li><p><strong>mws</strong> (<em>list</em><em>, </em><em>tuple</em><em>, or </em><em>array</em>) – Molecular weight of each gas component [g/mol]</p></li>
+<li><p><strong>xs</strong> (<em>list</em><em>, </em><em>tuple</em><em>, or </em><em>array</em>) – Mole fraction of each gas component [-]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mu</strong> (<em>float</em>) – Gas viscosity of the mixture. Units are same as input viscosity.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If sum of mole fractions does not equal 1.0</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_h2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">mu_n2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">mw_h2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mw</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">mw_n2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mw</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">mu_herning</span><span class="p">([</span><span class="n">mu_h2</span><span class="p">,</span> <span class="n">mu_n2</span><span class="p">],</span> <span class="p">[</span><span class="n">mw_h2</span><span class="p">,</span> <span class="n">mw_n2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">])</span>
+<span class="go">252.81</span>
 </pre></div>
 </div>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id7">4</a></span></dt>
+<dd><p>F. Herning and L. Zipperer. Calculation of the Viscosity of
+Technical Gas Mixtures From the Viscosity of the Individual Gases.
+Gas-und Wasserfach, vol. 79, pp. 69-73, 1936.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id8">5</a></span></dt>
+<dd><p>Thomas Davidson. A Simple and Accurate Method for Calculating
+Viscosity of Gaseous Mixtures. United States Department of the Interior:
+Report of Investigations 9456, 1993.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>chemics.molecular_weight &mdash; Chemics 19.5.2 documentation</title>
+  <title>chemics.molecular_weight &mdash; Chemics 19.6 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                19.5.2
+                19.6
               </div>
             
           
@@ -165,12 +165,11 @@
            <div itemprop="articleBody">
             
   <h1>Source code for chemics.molecular_weight</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">.atomic_elements</span> <span class="k">import</span> <span class="n">atomic_elements</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;molecular_weight&#39;</span><span class="p">,</span> <span class="s1">&#39;mw_mix&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mw&#39;</span><span class="p">,</span> <span class="s1">&#39;mw_mix&#39;</span><span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">_find_end</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
@@ -216,12 +215,12 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    mw : float</span>
+<span class="sd">    mole_weight : float</span>
 <span class="sd">        Sum of molecular weights from molecular formula.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">mw</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">mw</span>
+        <span class="n">mole_weight</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mole_weight</span>
 
     <span class="n">t</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -237,7 +236,7 @@
     <span class="k">return</span> <span class="n">_parse</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">stack</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="molecular_weight"><a class="viewcode-back" href="../../molecular_weight.html#chemics.molecular_weight.molecular_weight">[docs]</a><span class="k">def</span> <span class="nf">molecular_weight</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
+<div class="viewcode-block" id="mw"><a class="viewcode-back" href="../../molecular_weight.html#chemics.molecular_weight.mw">[docs]</a><span class="k">def</span> <span class="nf">mw</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Tokenize a molecular formula to determine total molecular weight.</span>
 <span class="sd">    Calculation is based on atomic weight values from IUPAC [1]_.</span>
@@ -254,13 +253,13 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; molecular_weight(&#39;C&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; mw(&#39;C&#39;)</span>
 <span class="sd">    12.011</span>
 
-<span class="sd">    &gt;&gt;&gt; molecular_weight(&#39;CH4&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; mw(&#39;CH4&#39;)</span>
 <span class="sd">    16.04</span>
 
-<span class="sd">    &gt;&gt;&gt; molecular_weight(&#39;(NH4)2SO4&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; mw(&#39;(NH4)2SO4&#39;)</span>
 <span class="sd">    132.13</span>
 
 <span class="sd">    References</span>
@@ -270,46 +269,50 @@
 <span class="sd">       https://iupac.org/what-we-do/periodic-table-of-elements/.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">tokens</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[A-Z][a-z]*|\d+|\(|\)&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
-    <span class="n">mw</span> <span class="o">=</span> <span class="n">_parse</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="p">[])</span>
-    <span class="k">return</span> <span class="n">mw</span></div>
+    <span class="n">molecular_weight</span> <span class="o">=</span> <span class="n">_parse</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">return</span> <span class="n">molecular_weight</span></div>
 
 
-<div class="viewcode-block" id="mw_mix"><a class="viewcode-back" href="../../molecular_weight.html#chemics.molecular_weight.mw_mix">[docs]</a><span class="k">def</span> <span class="nf">mw_mix</span><span class="p">(</span><span class="n">mix</span><span class="p">,</span> <span class="n">wts</span><span class="p">):</span>
+<div class="viewcode-block" id="mw_mix"><a class="viewcode-back" href="../../molecular_weight.html#chemics.molecular_weight.mw_mix">[docs]</a><span class="k">def</span> <span class="nf">mw_mix</span><span class="p">(</span><span class="n">mws</span><span class="p">,</span> <span class="n">xs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Molecular weight of a gas mixture calculated as a weighted mean.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    mix : list of str</span>
-<span class="sd">        Components of the gas mixture</span>
-<span class="sd">    wts : list of float</span>
-<span class="sd">        Weight fraction of each gas component, sums to 1.0</span>
+<span class="sd">    mws : list, tuple, or array</span>
+<span class="sd">        Molecular weight of each gas component [g/mol]</span>
+<span class="sd">    xs : list, tuple, or array</span>
+<span class="sd">        Mole fraction of each gas component [-]</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    mw_mix : float</span>
 <span class="sd">        Molecular weight of a gas mixture [g/mol]</span>
 
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If sum of mole fractions does not equal 1.0</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; mw_mix([&#39;H2&#39;, &#39;N2&#39;], [0.8, 0.2])</span>
+<span class="sd">    &gt;&gt;&gt; mw_h2 = cm.mw(&#39;H2&#39;)</span>
+<span class="sd">    ... mw_n2 = cm.mw(&#39;N2&#39;)</span>
+<span class="sd">    ... mw_mix([mw_h2, mw_n2], [0.8, 0.2])</span>
 <span class="sd">    7.2156</span>
 
-<span class="sd">    &gt;&gt;&gt; mw_mix([&#39;H2&#39;, &#39;N2&#39;, &#39;CH4&#39;], [0.4, 0.1, 0.5])</span>
+<span class="sd">    &gt;&gt;&gt; mw_h2 = cm.mw(&#39;H2&#39;)</span>
+<span class="sd">    ... mw_n2 = cm.mw(&#39;N2&#39;)</span>
+<span class="sd">    ... mw_ch4 = cm.mw(&#39;CH4&#39;)</span>
+<span class="sd">    ... mw_mix([mw_h2, mw_n2, mw_ch4], [0.4, 0.1, 0.5])</span>
 <span class="sd">    11.6293</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mix</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wts</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of components in mixture must be same as weights&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">wts</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Weights must sum to 1.0&#39;</span><span class="p">)</span>
-
-    <span class="n">mw_gases</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">gas</span> <span class="ow">in</span> <span class="n">mix</span><span class="p">:</span>
-        <span class="n">mw</span> <span class="o">=</span> <span class="n">molecular_weight</span><span class="p">(</span><span class="n">gas</span><span class="p">)</span>
-        <span class="n">mw_gases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mw</span><span class="p">)</span>
-
-    <span class="n">mw_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">mw_gases</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">wts</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">mw_mix</span></div>
+    <span class="n">mws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mws</span><span class="p">)</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">xs</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Sum of mole fractions must be 1.0&#39;</span><span class="p">)</span>
+    <span class="n">molwt_mix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">mws</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">molwt_mix</span></div>
 </pre></div>
 
            </div>
