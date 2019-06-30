@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Choking velocity &mdash; Chemics 19.6 documentation</title>
+  <title>Choking velocity &mdash; Chemics 19.6.1 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.6
+                19.6.1
               </div>
             
           
@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wood_thermal_conductivity.html">Wood thermal conductivity</a></li>
 </ul>
 
             
@@ -173,7 +174,7 @@
 <span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.choking_velocity" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="chemics.choking_velocity.uch_bifan">
-<code class="descclassname">chemics.choking_velocity.</code><code class="descname">uch_bifan</code><span class="sig-paren">(</span><em>ar</em>, <em>dp</em>, <em>gs</em>, <em>rhog</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_bifan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_bifan" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.choking_velocity.</code><code class="sig-name descname">uch_bifan</code><span class="sig-paren">(</span><em class="sig-param">ar</em>, <em class="sig-param">dp</em>, <em class="sig-param">gs</em>, <em class="sig-param">rhog</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_bifan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_bifan" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choking velocity from Bi and Fan <a class="footnote-reference brackets" href="#id2" id="id1">1</a>, also see Zhang 2015 paper.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -199,7 +200,7 @@ beds. AIChE Annual Meeting. AIChE, Los Angeles, pp. 17-22, 1991.</p>
 
 <dl class="function">
 <dt id="chemics.choking_velocity.uch_leung">
-<code class="descclassname">chemics.choking_velocity.</code><code class="descname">uch_leung</code><span class="sig-paren">(</span><em>us</em>, <em>ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_leung"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_leung" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.choking_velocity.</code><code class="sig-name descname">uch_leung</code><span class="sig-paren">(</span><em class="sig-param">us</em>, <em class="sig-param">ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_leung"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_leung" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choking velocity based on Equation 6 from Leung <a class="footnote-reference brackets" href="#id4" id="id3">2</a>. All parameters must
 be in units of ft/s or in units of m/s.</p>
 <dl class="field-list simple">
@@ -225,7 +226,7 @@ Chem. Process Des. Develop., vol. 10, no. 2, pp. 183-189, 1971.</p>
 
 <dl class="function">
 <dt id="chemics.choking_velocity.uch_matsen">
-<code class="descclassname">chemics.choking_velocity.</code><code class="descname">uch_matsen</code><span class="sig-paren">(</span><em>gs</em>, <em>rhos</em>, <em>ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_matsen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_matsen" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.choking_velocity.</code><code class="sig-name descname">uch_matsen</code><span class="sig-paren">(</span><em class="sig-param">gs</em>, <em class="sig-param">rhos</em>, <em class="sig-param">ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_matsen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_matsen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choking velocity from the Matsen paper <a class="footnote-reference brackets" href="#id6" id="id5">3</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -250,7 +251,7 @@ Technology, 32, 21-33.</p>
 
 <dl class="function">
 <dt id="chemics.choking_velocity.uch_psri">
-<code class="descclassname">chemics.choking_velocity.</code><code class="descname">uch_psri</code><span class="sig-paren">(</span><em>x</em>, <em>dp</em>, <em>d_pipe</em>, <em>gs</em>, <em>rhog</em>, <em>rhos</em>, <em>ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_psri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_psri" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.choking_velocity.</code><code class="sig-name descname">uch_psri</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">dp</em>, <em class="sig-param">d_pipe</em>, <em class="sig-param">gs</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em>, <em class="sig-param">ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_psri"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_psri" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choking velocity from PSRI 2016 notebook. Uses MKS units for input
 parameters but returns Uch in ft/s. Function requires SciPy fsolve to solve
 for Uch.</p>
@@ -276,7 +277,7 @@ for Uch.</p>
 
 <dl class="function">
 <dt id="chemics.choking_velocity.uch_punwani">
-<code class="descclassname">chemics.choking_velocity.</code><code class="descname">uch_punwani</code><span class="sig-paren">(</span><em>xy</em>, <em>d_pipe</em>, <em>gs</em>, <em>rhog</em>, <em>rhos</em>, <em>ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_punwani"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_punwani" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.choking_velocity.</code><code class="sig-name descname">uch_punwani</code><span class="sig-paren">(</span><em class="sig-param">xy</em>, <em class="sig-param">d_pipe</em>, <em class="sig-param">gs</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em>, <em class="sig-param">ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_punwani"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_punwani" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provide functions to solve for voidage and choking velocity based on
 equations from Punwani 1976. Requires SciPy fsolve function.</p>
 <dl class="field-list simple">
@@ -303,7 +304,7 @@ Chicago, IL, 1-14.</p>
 
 <dl class="function">
 <dt id="chemics.choking_velocity.uch_yang">
-<code class="descclassname">chemics.choking_velocity.</code><code class="descname">uch_yang</code><span class="sig-paren">(</span><em>xy</em>, <em>d_pipe</em>, <em>gs</em>, <em>rhos</em>, <em>ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_yang"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_yang" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.choking_velocity.</code><code class="sig-name descname">uch_yang</code><span class="sig-paren">(</span><em class="sig-param">xy</em>, <em class="sig-param">d_pipe</em>, <em class="sig-param">gs</em>, <em class="sig-param">rhos</em>, <em class="sig-param">ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_yang"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_yang" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provide functions to solve for voidage and choking velocity based on
 equations from Yang 1975. Requires SciPy fsolve function.</p>
 <dl class="field-list simple">
@@ -329,7 +330,7 @@ AIChE Journal, 21, 5, 1013-1015.</p>
 
 <dl class="function">
 <dt id="chemics.choking_velocity.uch_yousfi">
-<code class="descclassname">chemics.choking_velocity.</code><code class="descname">uch_yousfi</code><span class="sig-paren">(</span><em>dp</em>, <em>gs</em>, <em>rhog</em>, <em>mu</em>, <em>ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_yousfi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_yousfi" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.choking_velocity.</code><code class="sig-name descname">uch_yousfi</code><span class="sig-paren">(</span><em class="sig-param">dp</em>, <em class="sig-param">gs</em>, <em class="sig-param">rhog</em>, <em class="sig-param">mu</em>, <em class="sig-param">ut</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_yousfi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_yousfi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choking velocity from Yousfi 1974, also see Zhang 2015 paper.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -353,7 +354,7 @@ Chemical Engineering Science, 29, 1939-1946.</p>
 
 <dl class="function">
 <dt id="chemics.choking_velocity.uch_zhang">
-<code class="descclassname">chemics.choking_velocity.</code><code class="descname">uch_zhang</code><span class="sig-paren">(</span><em>ar</em>, <em>dp</em>, <em>gs</em>, <em>rhog</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_zhang"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_zhang" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.choking_velocity.</code><code class="sig-name descname">uch_zhang</code><span class="sig-paren">(</span><em class="sig-param">ar</em>, <em class="sig-param">dp</em>, <em class="sig-param">gs</em>, <em class="sig-param">rhog</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/choking_velocity.html#uch_zhang"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.choking_velocity.uch_zhang" title="Permalink to this definition">¶</a></dt>
 <dd><p>Choking velocity from Zhang 2015.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

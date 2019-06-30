@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Conversions &mdash; Chemics 19.6 documentation</title>
+  <title>Conversions &mdash; Chemics 19.6.1 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.6
+                19.6.1
               </div>
             
           
@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wood_thermal_conductivity.html">Wood thermal conductivity</a></li>
 </ul>
 
             
@@ -171,7 +172,7 @@
 <p>Helper functions for unit conversion.</p>
 <span class="target" id="module-chemics.conversions"></span><dl class="function">
 <dt id="chemics.conversions.massfrac_to_molefrac">
-<code class="descclassname">chemics.conversions.</code><code class="descname">massfrac_to_molefrac</code><span class="sig-paren">(</span><em>y</em>, <em>mw</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/conversions.html#massfrac_to_molefrac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.conversions.massfrac_to_molefrac" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.conversions.</code><code class="sig-name descname">massfrac_to_molefrac</code><span class="sig-paren">(</span><em class="sig-param">y</em>, <em class="sig-param">mw</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/conversions.html#massfrac_to_molefrac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.conversions.massfrac_to_molefrac" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert from mass fractions to mole fractions. Calculation assumes a total
 mass of 100 g.</p>
 <div class="math notranslate nohighlight">
@@ -201,7 +202,7 @@ component.</p>
 
 <dl class="function">
 <dt id="chemics.conversions.molefrac_to_massfrac">
-<code class="descclassname">chemics.conversions.</code><code class="descname">molefrac_to_massfrac</code><span class="sig-paren">(</span><em>x</em>, <em>mw</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/conversions.html#molefrac_to_massfrac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.conversions.molefrac_to_massfrac" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.conversions.</code><code class="sig-name descname">molefrac_to_massfrac</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">mw</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/conversions.html#molefrac_to_massfrac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.conversions.molefrac_to_massfrac" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert from mole fractions to mass fractions. Calculation assumes total
 moles is 100.</p>
 <div class="math notranslate nohighlight">
@@ -231,7 +232,7 @@ component.</p>
 
 <dl class="function">
 <dt id="chemics.conversions.slm_to_lpm">
-<code class="descclassname">chemics.conversions.</code><code class="descname">slm_to_lpm</code><span class="sig-paren">(</span><em>slm</em>, <em>pgas</em>, <em>tgas</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/conversions.html#slm_to_lpm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.conversions.slm_to_lpm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.conversions.</code><code class="sig-name descname">slm_to_lpm</code><span class="sig-paren">(</span><em class="sig-param">slm</em>, <em class="sig-param">pgas</em>, <em class="sig-param">tgas</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/conversions.html#slm_to_lpm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.conversions.slm_to_lpm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert volumetric gas flow from standard liters per minute (SLM or SLPM)
 to liters per minute (LPM) where STP defined as 273.25 K and 101,325 Pa.</p>
 <div class="math notranslate nohighlight">

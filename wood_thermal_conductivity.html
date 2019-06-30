@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bubble velocity &mdash; Chemics 19.6.1 documentation</title>
+  <title>Wood thermal conductivity &mdash; Chemics 19.6.1 documentation</title>
   
 
   
@@ -37,8 +37,7 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Choking velocity" href="choking_velocity.html" />
-    <link rel="prev" title="Bed expansion factor" href="bed_expansion_factor.html" /> 
+    <link rel="prev" title="Transport velocity" href="transport_velocity.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,7 +91,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Bubble velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devol_time.html">Devolatilization time</a></li>
@@ -104,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wood_thermal_conductivity.html">Wood thermal conductivity</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wood thermal conductivity</a></li>
 </ul>
 
             
@@ -150,7 +149,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Bubble velocity</li>
+      <li>Wood thermal conductivity</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,62 +166,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="bubble-velocity">
-<h1>Bubble velocity<a class="headerlink" href="#bubble-velocity" title="Permalink to this headline">¶</a></h1>
-<p>As stated in the Kunii and Levenspiel book, the bubble rise velocity in a dense
-bed can be calculated as</p>
-<div class="math notranslate nohighlight">
-\[u_{br} = 0.711(g d_b)^{1/2} \quad \text{where} \quad d_b/d_t &lt; 0.125\]</div>
-<p>Wall effects can slow the rise of bubbles when <span class="math notranslate nohighlight">\(d_b/d_t &gt; 0.125\)</span>;
-as such, the rise velocity is calculated as</p>
-<div class="math notranslate nohighlight">
-\[u_{br} = \left[0.711(g d_b)^{1/2}\right]1.2\,exp\left(-1.49
-\frac{d_b}{d_t}\right) \quad \text{where} \quad 0.125 &lt; d_b/d_t &lt; 0.6\]</div>
-<p>For conditions where <span class="math notranslate nohighlight">\(d_b/d_t &gt; 0.6\)</span>, the fluidized bed is considered to
-be slugging.</p>
-<div class="section" id="nomenclature">
-<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line"><span class="math notranslate nohighlight">\(d_b\)</span> - Diameter of sphere having same volume as spherical cap bubble, effective bubble diameter (m)</div>
-<div class="line"><span class="math notranslate nohighlight">\(d_t\)</span> - Bed or tube diameter (m)</div>
-<div class="line"><span class="math notranslate nohighlight">\(g\)</span> - Acceleration due to gravity, 9.81 m/s²</div>
-<div class="line"><span class="math notranslate nohighlight">\(u_{br}\)</span> - Rise velocity of single bubbles in a fluidized bed (m/s)</div>
-</div>
-</div>
-<div class="section" id="module-chemics.bubble_velocity">
-<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.bubble_velocity" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="module-chemics.wood_thermal_conductivity">
+<span id="wood-thermal-conductivity"></span><h1>Wood thermal conductivity<a class="headerlink" href="#module-chemics.wood_thermal_conductivity" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="chemics.bubble_velocity.ubr">
-<code class="sig-prename descclassname">chemics.bubble_velocity.</code><code class="sig-name descname">ubr</code><span class="sig-paren">(</span><em class="sig-param">db</em>, <em class="sig-param">dt</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/bubble_velocity.html#ubr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.bubble_velocity.ubr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Rise velocity of single bubbles in a fluidized bed from Equations 5.3 and
-5.4 in Kunii and Levenspiel book <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<dt id="chemics.wood_thermal_conductivity.k_wood">
+<code class="sig-prename descclassname">chemics.wood_thermal_conductivity.</code><code class="sig-name descname">k_wood</code><span class="sig-paren">(</span><em class="sig-param">gb</em>, <em class="sig-param">so</em>, <em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/wood_thermal_conductivity.html#k_wood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.wood_thermal_conductivity.k_wood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thermal conductivity of wood based on of moisture content, volumetric
+shrinkage, and basic specific gravity.</p>
+<div class="math notranslate nohighlight">
+\[k = G_x (B + C x) + A\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is thermal conductivity [W/(mK)] of wood, <span class="math notranslate nohighlight">\(G_x\)</span> is
+specific gravity [-] based on volume at moisture content <span class="math notranslate nohighlight">\(x\)</span> [%] and
+<span class="math notranslate nohighlight">\(A, B, C\)</span> are constants.</p>
+<p>The <span class="math notranslate nohighlight">\(G_x\)</span> term is determined from</p>
+<div class="math notranslate nohighlight">
+\[G_x = \frac{G_b}{1 - S_x / 100}\]</div>
+<p>where <span class="math notranslate nohighlight">\(G_b\)</span> is basic specific gravity [-] and <span class="math notranslate nohighlight">\(S_x\)</span> is
+volumetric shrinkage [%] from green condition to moisture content <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>The <span class="math notranslate nohighlight">\(S_x\)</span> term is calculated from</p>
+<div class="math notranslate nohighlight">
+\[S_x = S_o \left(1 - \frac{x}{MC_{fs}} \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(S_o\)</span> is volumetric shrinkage [%] from Table 4-3 <a class="footnote-reference brackets" href="#id2" id="id1">1</a> and <span class="math notranslate nohighlight">\(MC_{fs}\)</span>
+is the fiber saturation point assumed to be 30% moisture content.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>db</strong> (<em>float</em>) – Diameter of sphere having same volume as spherical cap bubble,
-referred to as the effective bubble diameter [m]</p></li>
-<li><p><strong>dt</strong> (<em>float</em>) – Bed or tube diameter [m]</p></li>
+<li><p><strong>gb</strong> (<em>float</em>) – Basic specific gravity [-]</p></li>
+<li><p><strong>so</strong> (<em>float</em>) – Volumetric shrinkage [%]</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – Moisture content [%]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ubr</strong> (<em>float</em>) – Rise velocity of single bubbles in fluidized bed [m/s]</p>
+<dd class="field-even"><p><strong>k</strong> (<em>float</em>) – Thermal conductivity [W/(mK)]</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ubr</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
-<span class="go">0.4979</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">k_wood</span><span class="p">(</span><span class="mf">0.54</span><span class="p">,</span> <span class="mf">12.3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">0.1567</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
 <dl class="footnote brackets">
 <dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Daizo Kunii and Octave Levenspiel. Fluidization Engineering.
-Butterworth-Heinemann, 2nd edition, 1991.</p>
+<dd><p>Samuel V. Glass and Samuel L. Zelinka. Moisture Relations and
+Physical Properties of Wood. Ch. 4 in Wood Handbook, pp. 1-19, 2010.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
 </div>
 
 
@@ -233,10 +224,8 @@ Butterworth-Heinemann, 2nd edition, 1991.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="choking_velocity.html" class="btn btn-neutral float-right" title="Choking velocity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="bed_expansion_factor.html" class="btn btn-neutral float-left" title="Bed expansion factor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="transport_velocity.html" class="btn btn-neutral float-left" title="Transport velocity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

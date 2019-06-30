@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Minimum fluidization velocity &mdash; Chemics 19.6 documentation</title>
+  <title>Minimum fluidization velocity &mdash; Chemics 19.6.1 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.6
+                19.6.1
               </div>
             
           
@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wood_thermal_conductivity.html">Wood thermal conductivity</a></li>
 </ul>
 
             
@@ -233,7 +234,7 @@ estimate <span class="math notranslate nohighlight">\(u_{mf}\)</span>.</p>
 <span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.minimum_fluidization_velocity" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="chemics.minimum_fluidization_velocity.umf_coeff">
-<code class="descclassname">chemics.minimum_fluidization_velocity.</code><code class="descname">umf_coeff</code><span class="sig-paren">(</span><em>dp</em>, <em>mu</em>, <em>rhog</em>, <em>rhos</em>, <em>coeff='wenyu'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_coeff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_coeff" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.minimum_fluidization_velocity.</code><code class="sig-name descname">umf_coeff</code><span class="sig-paren">(</span><em class="sig-param">dp</em>, <em class="sig-param">mu</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em>, <em class="sig-param">coeff='wenyu'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_coeff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_coeff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine minimum fluidization velocity using experimental coefficients from
 Wen and Yu, Richardson, Saxena and Vogel, Babu, Grace, and Chitester. This
 approach can be used when bed void fraction and particle sphericity are not
@@ -271,7 +272,7 @@ Butterworth-Heinemann, 2nd edition, 1991.</p>
 
 <dl class="function">
 <dt id="chemics.minimum_fluidization_velocity.umf_ergun">
-<code class="descclassname">chemics.minimum_fluidization_velocity.</code><code class="descname">umf_ergun</code><span class="sig-paren">(</span><em>dp</em>, <em>ep</em>, <em>mu</em>, <em>phi</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_ergun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_ergun" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.minimum_fluidization_velocity.</code><code class="sig-name descname">umf_ergun</code><span class="sig-paren">(</span><em class="sig-param">dp</em>, <em class="sig-param">ep</em>, <em class="sig-param">mu</em>, <em class="sig-param">phi</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_ergun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_ergun" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine minimum fluidization velocity from particle and gas properties.
 This approach is based on the Ergun pressure drop equation for a bed of
 particles. Refer to Equations 18 and 19 in Chapter 3 of Kunii and Levenspiel
@@ -307,7 +308,7 @@ Butterworth-Heinemann, 2nd edition, 1991.</p>
 
 <dl class="function">
 <dt id="chemics.minimum_fluidization_velocity.umf_reynolds">
-<code class="descclassname">chemics.minimum_fluidization_velocity.</code><code class="descname">umf_reynolds</code><span class="sig-paren">(</span><em>dp</em>, <em>ep</em>, <em>mu</em>, <em>phi</em>, <em>re</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_reynolds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_reynolds" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.minimum_fluidization_velocity.</code><code class="sig-name descname">umf_reynolds</code><span class="sig-paren">(</span><em class="sig-param">dp</em>, <em class="sig-param">ep</em>, <em class="sig-param">mu</em>, <em class="sig-param">phi</em>, <em class="sig-param">re</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/minimum_fluidization_velocity.html#umf_reynolds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.minimum_fluidization_velocity.umf_reynolds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate minimum fluidization velocity for very small particles where
 Reynolds number &lt; 20 and for very large particles where Reynolds number &gt;
 1000. See Equations 21 and 22 in Chapter 3 of Kunii and Levenspiel <a class="footnote-reference brackets" href="#id6" id="id5">3</a>.</p>

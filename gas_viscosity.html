@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Gas viscosity &mdash; Chemics 19.6 documentation</title>
+  <title>Gas viscosity &mdash; Chemics 19.6.1 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.6
+                19.6.1
               </div>
             
           
@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wood_thermal_conductivity.html">Wood thermal conductivity</a></li>
 </ul>
 
             
@@ -191,7 +192,7 @@ function. Note that for a gas mixture, the sum of the components must equal 1.</
 <span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.gas_viscosity" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="chemics.gas_viscosity.mu_gas">
-<code class="descclassname">chemics.gas_viscosity.</code><code class="descname">mu_gas</code><span class="sig-paren">(</span><em>formula</em>, <em>temp</em>, <em>cas=None</em>, <em>full=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_gas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_gas" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.gas_viscosity.</code><code class="sig-name descname">mu_gas</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">temp</em>, <em class="sig-param">cas=None</em>, <em class="sig-param">full=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_gas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_gas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Viscosity of gas as a function of temperature. Results calculated from
 coefficients in Yaws’ Critical Property Data for Chemical Engineers and
 Chemists <a class="footnote-reference brackets" href="#id2" id="id1">1</a>. CAS (Chemical Abstracts Service) number may be required for
@@ -261,7 +262,7 @@ Property Data for Chemical Engineers and Chemists. Published by Knovel,
 
 <dl class="function">
 <dt id="chemics.gas_viscosity.mu_graham">
-<code class="descclassname">chemics.gas_viscosity.</code><code class="descname">mu_graham</code><span class="sig-paren">(</span><em>mus</em>, <em>xs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_graham"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_graham" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.gas_viscosity.</code><code class="sig-name descname">mu_graham</code><span class="sig-paren">(</span><em class="sig-param">mus</em>, <em class="sig-param">xs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_graham"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_graham" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate viscosity of a gas mixture using Graham’s method <a class="footnote-reference brackets" href="#id5" id="id3">2</a>. Formula
 presented here is based on Equation 1 from the Davidson report <a class="footnote-reference brackets" href="#id6" id="id4">3</a>.</p>
 <div class="math notranslate nohighlight">
@@ -306,7 +307,7 @@ Report of Investigations 9456, 1993.</p>
 
 <dl class="function">
 <dt id="chemics.gas_viscosity.mu_herning">
-<code class="descclassname">chemics.gas_viscosity.</code><code class="descname">mu_herning</code><span class="sig-paren">(</span><em>mus</em>, <em>mws</em>, <em>xs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_herning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_herning" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.gas_viscosity.</code><code class="sig-name descname">mu_herning</code><span class="sig-paren">(</span><em class="sig-param">mus</em>, <em class="sig-param">mws</em>, <em class="sig-param">xs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/gas_viscosity.html#mu_herning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.gas_viscosity.mu_herning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate viscosity of a gas mixture using the approach by Herning and
 Zipperer <a class="footnote-reference brackets" href="#id9" id="id7">4</a>. Formula presented here is based on Equation 1 from the
 Davidson report <a class="footnote-reference brackets" href="#id10" id="id8">5</a>.</p>

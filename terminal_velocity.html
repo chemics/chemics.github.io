@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Terminal velocity &mdash; Chemics 19.6 documentation</title>
+  <title>Terminal velocity &mdash; Chemics 19.6.1 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.6
+                19.6.1
               </div>
             
           
@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Terminal velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wood_thermal_conductivity.html">Wood thermal conductivity</a></li>
 </ul>
 
             
@@ -238,7 +239,7 @@ C_d &amp;= \frac{4\, d_p\, g\, (\rho_s - \rho_g)}{3\, {u_t}^2\, \rho_g}\end{spli
 <span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.terminal_velocity" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="chemics.terminal_velocity.ut">
-<code class="descclassname">chemics.terminal_velocity.</code><code class="descname">ut</code><span class="sig-paren">(</span><em>cd</em>, <em>dp</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/terminal_velocity.html#ut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.terminal_velocity.ut" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.terminal_velocity.</code><code class="sig-name descname">ut</code><span class="sig-paren">(</span><em class="sig-param">cd</em>, <em class="sig-param">dp</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/terminal_velocity.html#ut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.terminal_velocity.ut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate terminal velocity of a single particle based on Equation 28 on
 page 80 in the Kunii and Levenspiel book <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
 <dl class="field-list simple">
@@ -270,7 +271,7 @@ Butterworth-Heinemann, 2nd edition, 1991.</p>
 
 <dl class="function">
 <dt id="chemics.terminal_velocity.ut_ganser">
-<code class="descclassname">chemics.terminal_velocity.</code><code class="descname">ut_ganser</code><span class="sig-paren">(</span><em>dp</em>, <em>mu</em>, <em>phi</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/terminal_velocity.html#ut_ganser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.terminal_velocity.ut_ganser" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.terminal_velocity.</code><code class="sig-name descname">ut_ganser</code><span class="sig-paren">(</span><em class="sig-param">dp</em>, <em class="sig-param">mu</em>, <em class="sig-param">phi</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/terminal_velocity.html#ut_ganser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.terminal_velocity.ut_ganser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate terminal velocity of a particle based on the Ganser drag
 correlation <a class="footnote-reference brackets" href="#id6" id="id3">2</a>. According to the Chhabra paper <a class="footnote-reference brackets" href="#id7" id="id4">3</a>, the Ganser drag
 correlation is applicable for sphericity values from 0.09 to 1.</p>
@@ -324,7 +325,7 @@ Science, 62, 45-55, 2007.</p>
 
 <dl class="function">
 <dt id="chemics.terminal_velocity.ut_haider">
-<code class="descclassname">chemics.terminal_velocity.</code><code class="descname">ut_haider</code><span class="sig-paren">(</span><em>dp</em>, <em>mu</em>, <em>phi</em>, <em>rhog</em>, <em>rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/terminal_velocity.html#ut_haider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.terminal_velocity.ut_haider" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemics.terminal_velocity.</code><code class="sig-name descname">ut_haider</code><span class="sig-paren">(</span><em class="sig-param">dp</em>, <em class="sig-param">mu</em>, <em class="sig-param">phi</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/terminal_velocity.html#ut_haider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.terminal_velocity.ut_haider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate terminal velocity of a particle as discussed in the Haider and
 Levenspiel <a class="footnote-reference brackets" href="#id10" id="id9">5</a>. Valid for particle sphericities of 0.5 to 1. Particle
 diameter should be an equivalent spherical diameter, such as the diameter
