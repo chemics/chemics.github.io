@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>chemics.transport_velocity &mdash; Chemics 19.7 documentation</title>
+  <title>chemics.wood_heat_capacity &mdash; Chemics 19.7 documentation</title>
   
 
   
@@ -151,7 +151,7 @@
         
           <li><a href="../index.html">Module code</a> &raquo;</li>
         
-      <li>chemics.transport_velocity</li>
+      <li>chemics.wood_heat_capacity</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -166,43 +166,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for chemics.transport_velocity</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="utr"><a class="viewcode-back" href="../../transport_velocity.html#chemics.transport_velocity.utr">[docs]</a><span></span><span class="k">def</span> <span class="nf">utr</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">rhog</span><span class="p">,</span> <span class="n">rhos</span><span class="p">):</span>
+  <h1>Source code for chemics.wood_heat_capacity</h1><div class="highlight"><pre>
+<span></span>
+<div class="viewcode-block" id="cp_wood"><a class="viewcode-back" href="../../wood_heat_capacity.html#chemics.wood_heat_capacity.cp_wood">[docs]</a><span class="k">def</span> <span class="nf">cp_wood</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tk</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Determine the transport velocity of particles in a circulating fluidized</span>
-<span class="sd">    bed riser. Based on Equation 2 in article by Zhang et al. [1]_.</span>
+<span class="sd">    Heat capacity of wood based on moisture content and temperature</span>
+
+<span class="sd">    .. math:: c_{p,x} = \\left(c_{p0} + c_{pw} \\frac{x}{100}\\right) / \\left(1 + \\frac{x}{100}\\right) + A_c</span>
+
+<span class="sd">    where :math:`c_{p,x}` is heat capacity of wet wood [kJ/(kg K)],</span>
+<span class="sd">    :math:`c_{p0}` is heat capacity of dry wood [kJ/(kg K)], :math:`c_{pw}` is</span>
+<span class="sd">    heat capacity of water as 4.18 kJ/(kg K), :math:`x` is moisture content [%],</span>
+<span class="sd">    and :math:`Ac` is an adjustment factor that accounts for the additional</span>
+<span class="sd">    energy in the wood–water bond [1]_.</span>
+
+<span class="sd">    The :math:`c_{p0}` term is determined from</span>
+
+<span class="sd">    .. math:: c_{p0} = 0.1031 + 0.003867\\,T</span>
+
+<span class="sd">    where :math:`T` is temperature [K]. The :math:`A_c` term is calculated from</span>
+
+<span class="sd">    .. math:: A_c = x (b_1 + b_2 T + b_3 x)</span>
+
+<span class="sd">    with :math:`b_1 = -0.06191`, :math:`b_2 = 2.36e\\times10^{-4}`, and :math:`b_3 = -1.33\\times10^{-4}`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    dp : float</span>
-<span class="sd">        Diameter of particle [m]</span>
-<span class="sd">    mu : float</span>
-<span class="sd">        Viscosity of gas [kg/(m s)]</span>
-<span class="sd">    rhog : float</span>
-<span class="sd">        Density of gas [kg/m^3]</span>
-<span class="sd">    rhos : float</span>
-<span class="sd">        Density of solid particle [kg/m^3]</span>
+<span class="sd">    x : float</span>
+<span class="sd">        Moisture content [%]</span>
+<span class="sd">    tk : float</span>
+<span class="sd">        Temperature [K]</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    utr : float</span>
-<span class="sd">        Transport velocity [m/s]</span>
+<span class="sd">    cp : float</span>
+<span class="sd">        Heat capacity of wood [kJ/(kg K)]</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; utr(0.0005, 3.6e-5, 0.44, 1630)</span>
-<span class="sd">    26.0617</span>
+<span class="sd">    &gt;&gt;&gt; cp_wood(12, 340)</span>
+<span class="sd">    1.91</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] H.L. Zhang, J. Degreve, R. Dewil, and J. Baeyens. Operation diagram</span>
-<span class="sd">        of Circulating Fluidized Beds (CFBs). Procedia Engineering, 102,</span>
-<span class="sd">        pp. 1092-1103, 2015.</span>
+<span class="sd">    .. [1] Samuel V. Glass and Samuel L. Zelinka. Moisture Relations and</span>
+<span class="sd">       Physical Properties of Wood. Ch. 4 in Wood Handbook, pp. 1-19, 2010.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>                                                <span class="c1"># gravity acceleraton [m/s^2]</span>
-    <span class="n">ar</span> <span class="o">=</span> <span class="p">((</span><span class="n">dp</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">rhog</span> <span class="o">*</span> <span class="p">(</span><span class="n">rhos</span> <span class="o">-</span> <span class="n">rhog</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">mu</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># Archimedes number [-]</span>
-    <span class="n">utr</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span> <span class="o">/</span> <span class="p">(</span><span class="n">dp</span> <span class="o">*</span> <span class="n">rhog</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mf">3.23</span> <span class="o">+</span> <span class="mf">0.23</span> <span class="o">*</span> <span class="n">ar</span><span class="p">)</span>           <span class="c1"># transport velocity [m/s]</span>
-    <span class="k">return</span> <span class="n">utr</span></div>
+
+    <span class="n">cpw</span> <span class="o">=</span> <span class="mf">4.18</span>  <span class="c1"># heat capacity of water, kJ/(kg K)</span>
+
+    <span class="c1"># coefficients for adjustment factor Ac</span>
+    <span class="n">b1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.06191</span>
+    <span class="n">b2</span> <span class="o">=</span> <span class="mf">2.36e-4</span>
+    <span class="n">b3</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.33e-4</span>
+
+    <span class="c1"># adjustment factor for additional energy in wood-water bond, Eq. 4-18</span>
+    <span class="n">Ac</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">b1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">tk</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># heat capacity of dry wood, Eq. 4-16a, kJ/(kg K)</span>
+    <span class="n">cp_dry</span> <span class="o">=</span> <span class="mf">0.1031</span> <span class="o">+</span> <span class="mf">0.003867</span> <span class="o">*</span> <span class="n">tk</span>
+
+    <span class="c1"># heat capacity of wood that contains water, Eq. 4-17, kJ/(kg K)</span>
+    <span class="n">cp_wet</span> <span class="o">=</span> <span class="p">(</span><span class="n">cp_dry</span> <span class="o">+</span> <span class="n">cpw</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">Ac</span>
+
+    <span class="k">return</span> <span class="n">cp_wet</span></div>
 </pre></div>
 
            </div>

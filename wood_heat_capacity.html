@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; Chemics 19.7 documentation</title>
+  <title>Wood heat capacity &mdash; Chemics 19.7 documentation</title>
   
 
   
@@ -26,7 +26,6 @@
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/javascript" src="_static/searchtools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -37,7 +36,9 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Wood thermal conductivity" href="wood_thermal_conductivity.html" />
+    <link rel="prev" title="Transport velocity" href="transport_velocity.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -71,7 +72,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -88,7 +89,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
@@ -103,7 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wood_heat_capacity.html">Wood heat capacity</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wood heat capacity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wood_thermal_conductivity.html">Wood thermal conductivity</a></li>
 </ul>
 
@@ -150,7 +151,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Wood heat capacity</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,24 +168,67 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="module-chemics.wood_heat_capacity">
+<span id="wood-heat-capacity"></span><h1>Wood heat capacity<a class="headerlink" href="#module-chemics.wood_heat_capacity" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="chemics.wood_heat_capacity.cp_wood">
+<code class="sig-prename descclassname">chemics.wood_heat_capacity.</code><code class="sig-name descname">cp_wood</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">tk</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/wood_heat_capacity.html#cp_wood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.wood_heat_capacity.cp_wood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Heat capacity of wood based on moisture content and temperature</p>
+<div class="math notranslate nohighlight">
+\[c_{p,x} = \left(c_{p0} + c_{pw} \frac{x}{100}\right) / \left(1 + \frac{x}{100}\right) + A_c\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_{p,x}\)</span> is heat capacity of wet wood [kJ/(kg K)],
+<span class="math notranslate nohighlight">\(c_{p0}\)</span> is heat capacity of dry wood [kJ/(kg K)], <span class="math notranslate nohighlight">\(c_{pw}\)</span> is
+heat capacity of water as 4.18 kJ/(kg K), <span class="math notranslate nohighlight">\(x\)</span> is moisture content [%],
+and <span class="math notranslate nohighlight">\(Ac\)</span> is an adjustment factor that accounts for the additional
+energy in the wood–water bond <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<p>The <span class="math notranslate nohighlight">\(c_{p0}\)</span> term is determined from</p>
+<div class="math notranslate nohighlight">
+\[c_{p0} = 0.1031 + 0.003867\,T\]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is temperature [K]. The <span class="math notranslate nohighlight">\(A_c\)</span> term is calculated from</p>
+<div class="math notranslate nohighlight">
+\[A_c = x (b_1 + b_2 T + b_3 x)\]</div>
+<p>with <span class="math notranslate nohighlight">\(b_1 = -0.06191\)</span>, <span class="math notranslate nohighlight">\(b_2 = 2.36e\times10^{-4}\)</span>, and <span class="math notranslate nohighlight">\(b_3 = -1.33\times10^{-4}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – Moisture content [%]</p></li>
+<li><p><strong>tk</strong> (<em>float</em>) – Temperature [K]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cp</strong> (<em>float</em>) – Heat capacity of wood [kJ/(kg K)]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cp_wood</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">340</span><span class="p">)</span>
+<span class="go">1.91</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Samuel V. Glass and Samuel L. Zelinka. Moisture Relations and
+Physical Properties of Wood. Ch. 4 in Wood Handbook, pp. 1-19, 2010.</p>
+</dd>
+</dl>
+</dd></dl>
 
-  
-  <div id="search-results">
-  
-  </div>
+</div>
+
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="wood_thermal_conductivity.html" class="btn btn-neutral float-right" title="Wood thermal conductivity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="transport_velocity.html" class="btn btn-neutral float-left" title="Transport velocity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -217,14 +261,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>
