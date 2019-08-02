@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Terminal velocity &mdash; Chemics 19.7 documentation</title>
+  <title>Terminal velocity &mdash; Chemics 19.8 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.7
+                19.8
               </div>
             
           
@@ -173,76 +173,15 @@
 <p>An individual particle can be carried by a stream of gas when the gas velocity
 exceeds the termnial velocity <span class="math notranslate nohighlight">\(u_t\)</span> of the particle. However, in
 fluidized bed reactors, entrainment of particles out of the bed may require a
-gas velocity many times higher than the terminal velocity. The sections below
-discuss different approaches for calculating <span class="math notranslate nohighlight">\(u_t\)</span>.</p>
-<div class="section" id="kunii-and-levenspiel-1991">
-<h2>Kunii and Levenspiel 1991<a class="headerlink" href="#kunii-and-levenspiel-1991" title="Permalink to this headline">¶</a></h2>
-<p>Kunii and Levenspiel provide an expression for the terminal velocity of a
-particle as shown below where <span class="math notranslate nohighlight">\(C_D\)</span> is an experimentally determined drag
-coefficient.</p>
-<div class="math notranslate nohighlight">
-\[u_t = \left( \frac{4 d_p\, (\rho_s - \rho_g) g}{3 \rho_g\, C_D} \right)^{1/2}\]</div>
-</div>
-<div class="section" id="haider-and-levenspiel-1989">
-<h2>Haider and Levenspiel 1989<a class="headerlink" href="#haider-and-levenspiel-1989" title="Permalink to this headline">¶</a></h2>
-<p>To determine the terminal velocity for a range of particle sphericities, Haider
-and Levenspiel first define two dimensionless quantities</p>
-<div class="math notranslate nohighlight">
-\[d_{*} = d_p \left[ \frac{g\, \rho_g (\rho_s - \rho_g)}{\mu^2} \right]^{1/3}\]</div>
-<div class="math notranslate nohighlight">
-\[u_* = \left[ \frac{18}{d{_*}^2} + \frac{2.3348 - 1.7439\, \phi}{d{_*}^{0.5}} \right]^{-1}\]</div>
-<p>where <span class="math notranslate nohighlight">\(0.5 \leq \phi \leq 1\)</span> and particle diameter <span class="math notranslate nohighlight">\(d_p\)</span> is an
-equivalent spherical diameter, the diameter of a sphere having the same volume
-as the particle. The relationship between <span class="math notranslate nohighlight">\(u_*\)</span> and <span class="math notranslate nohighlight">\(u_t\)</span> is given
-by</p>
-<div class="math notranslate nohighlight">
-\[u_* = u_t \left[ \frac{\rho{_g}^2}{g\, \mu\, (\rho_s - \rho_g)} \right]^{1/3}\]</div>
-<p>The terminal velocity of the particle can finally be determined by rearranging
-the above equation such that</p>
-<div class="math notranslate nohighlight">
-\[u_t = u_* \left[ \frac{g\, \mu\, (\rho_s - \rho_g)}{\rho{_g}^2} \right]^{1/3}\]</div>
-</div>
-<div class="section" id="ganser-1993">
-<h2>Ganser 1993<a class="headerlink" href="#ganser-1993" title="Permalink to this headline">¶</a></h2>
-<p>The Ganser paper proposed a drag coefficient for spherical and nonspherical
-particles</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}C_d &amp;= \frac{24}{Re\, K_1} \left( 1 + 0.1118 (Re\, K_1 K_2)^{0.6567} \right) + \frac{0.4305 K_2}{1 + \frac{3305}{Re\, K_1 K_2}} \\
-K_1 &amp;= \left( \frac{1}{3} + \frac{2}{3}\phi \right) \\
-K_2 &amp;= 10^{1.8148 (-log\, \phi)^{0.5743}}\end{split}\]</div>
-<p>where K₁ is Stokes’ shape factor and K₂ is Newton’s shape factor. The Cui 2007
-and Chhabra 1999 papers leave out the <span class="math notranslate nohighlight">\(-2.25*d_v/D\)</span> term in the shape
-factor equations. According to Chhabra 1999, the Ganser drag correlation is
-applicable to <span class="math notranslate nohighlight">\(0.09 \leq \phi \leq 1\)</span>.</p>
-<p>The Reynolds number and drag coefficient can be written in terms of the
-terminal velocity of the particle. Finally, by comparing the drag coefficient
-equations for a range of terminal velocities, <span class="math notranslate nohighlight">\(u_t\)</span> can be estimated from
-the system of equations.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}Re &amp;= \frac{d_p\, \rho_g\, u_t}{\mu} \\
-C_d &amp;= \frac{4\, d_p\, g\, (\rho_s - \rho_g)}{3\, {u_t}^2\, \rho_g}\end{split}\]</div>
-</div>
-<div class="section" id="nomenclature">
-<h2>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line"><span class="math notranslate nohighlight">\(d_*\)</span> - Dimensionless particle diameter (-)</div>
-<div class="line"><span class="math notranslate nohighlight">\(d_p\)</span> - Diameter of the particle or equivalent spherical diameter (m)</div>
-<div class="line"><span class="math notranslate nohighlight">\(g\)</span> - Gravitational constant as 9.81 m/s²</div>
-<div class="line"><span class="math notranslate nohighlight">\(\mu\)</span> - Viscosity of the fluid (kg/(m s))</div>
-<div class="line"><span class="math notranslate nohighlight">\(\phi\)</span> - Sphericity of the particle (-)</div>
-<div class="line"><span class="math notranslate nohighlight">\(\rho_g\)</span> - Density of the gas (kg/m³)</div>
-<div class="line"><span class="math notranslate nohighlight">\(\rho_s\)</span> - Density of the particle (kg/m³)</div>
-<div class="line"><span class="math notranslate nohighlight">\(u_*\)</span> - Dimensionless particle velocity (-)</div>
-<div class="line"><span class="math notranslate nohighlight">\(u_t\)</span> - Terminal velocity of a particle (m/s)</div>
-</div>
-</div>
-<div class="section" id="module-chemics.terminal_velocity">
-<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.terminal_velocity" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+gas velocity many times higher than the terminal velocity.</p>
+<span class="target" id="module-chemics.terminal_velocity"></span><dl class="function">
 <dt id="chemics.terminal_velocity.ut">
 <code class="sig-prename descclassname">chemics.terminal_velocity.</code><code class="sig-name descname">ut</code><span class="sig-paren">(</span><em class="sig-param">cd</em>, <em class="sig-param">dp</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/terminal_velocity.html#ut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.terminal_velocity.ut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate terminal velocity of a single particle based on Equation 28 on
-page 80 in the Kunii and Levenspiel book <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+page 80 in the Kunii and Levenspiel book <a class="footnote-reference brackets" href="#id2" id="id1">1</a> where <span class="math notranslate nohighlight">\(C_D\)</span> is an
+experimentally determined drag coefficient.</p>
+<div class="math notranslate nohighlight">
+\[u_t = \left( \frac{4 d_p\, (\rho_s - \rho_g) g}{3 \rho_g\, C_D} \right)^{1/2}\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -273,31 +212,31 @@ Butterworth-Heinemann, 2nd edition, 1991.</p>
 <dl class="function">
 <dt id="chemics.terminal_velocity.ut_ganser">
 <code class="sig-prename descclassname">chemics.terminal_velocity.</code><code class="sig-name descname">ut_ganser</code><span class="sig-paren">(</span><em class="sig-param">dp</em>, <em class="sig-param">mu</em>, <em class="sig-param">phi</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/terminal_velocity.html#ut_ganser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.terminal_velocity.ut_ganser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Estimate terminal velocity of a particle based on the Ganser drag
-correlation <a class="footnote-reference brackets" href="#id6" id="id3">2</a>. According to the Chhabra paper <a class="footnote-reference brackets" href="#id7" id="id4">3</a>, the Ganser drag
+<dd><p>Estimate terminal velocity of a non-spherical particle based on the Ganser
+drag coefficient <a class="footnote-reference brackets" href="#id6" id="id3">2</a>. According to the Chhabra paper <a class="footnote-reference brackets" href="#id7" id="id4">3</a>, the Ganser drag
 correlation is applicable for sphericity values from 0.09 to 1.</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}C_d &amp;= \frac{24}{Re\, K_1} \left( 1 + 0.1118 (Re\, K_1 K_2)^{0.6567} \right) + \frac{0.4305 K_2}{1 + \frac{3305}{Re\, K_1 K_2}}\\K_1 &amp;= \left( \frac{1}{3} + \frac{2}{3}\phi \right)\\K_2 &amp;= 10^{1.8148 (-log\, \phi)^{0.5743}}\end{aligned}\end{align} \]</div>
+<p>where K₁ is Stokes’ shape factor and K₂ is Newton’s shape factor. The Cui 2007
+and Chhabra 1999 papers leave out the <span class="math notranslate nohighlight">\(-2.25*d_v/D\)</span> term in the shape
+factor equations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dp</strong> (<em>float</em>) – Diameter of the particle [m]</p></li>
 <li><p><strong>mu</strong> (<em>float</em>) – Viscosity of gas [kg/(m s)]</p></li>
 <li><p><strong>phi</strong> (<em>float</em>) – Sphericity of the particle [-]</p></li>
-<li><p><strong>rhog</strong> (<em>float</em>) – Density of the gas [kg/m^3]</p></li>
-<li><p><strong>rhos</strong> (<em>float</em>) – Density of the particle [kg/m^3]</p></li>
+<li><p><strong>rhog</strong> (<em>float</em>) – Density of the gas [kg/m³]</p></li>
+<li><p><strong>rhos</strong> (<em>float</em>) – Density of the particle [kg/m³]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>cd</strong> (<em>float</em>) – Drag coefficient of the particle [-]</p></li>
-<li><p><strong>re</strong> (<em>float</em>) – Reynolds number of the particle [-]</p></li>
-<li><p><strong>ut</strong> (<em>float</em>) – Terminal velocity of particle [m/s]</p></li>
-</ul>
-</p>
+<dd class="field-even"><p><strong>ut</strong> (<em>float</em>) – Terminal velocity of non-spherical particle [m/s]</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">ut_ganser</span> <span class="o">=</span> <span class="n">ut_ganser</span><span class="p">(</span><span class="mf">0.00016</span><span class="p">,</span> <span class="mf">1.8e-5</span><span class="p">,</span> <span class="mf">0.67</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">2600</span><span class="p">)</span>
-<span class="go">11.6867, 6.6453, 0.6230</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ut_ganser</span><span class="p">(</span><span class="mf">0.00016</span><span class="p">,</span> <span class="mf">1.8e-5</span><span class="p">,</span> <span class="mf">0.67</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">2600</span><span class="p">)</span>
+<span class="go">0.6230</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -331,6 +270,21 @@ Science, 62, 45-55, 2007.</p>
 Levenspiel <a class="footnote-reference brackets" href="#id10" id="id9">5</a>. Valid for particle sphericities of 0.5 to 1. Particle
 diameter should be an equivalent spherical diameter, such as the diameter
 of a sphere having same volume as the particle.</p>
+<p>To determine the terminal velocity for a range of particle sphericities, Haider
+and Levenspiel first define two dimensionless quantities</p>
+<div class="math notranslate nohighlight">
+\[d_{*} = d_p \left[ \frac{g\, \rho_g (\rho_s - \rho_g)}{\mu^2} \right]^{1/3} \
+u_* = \left[ \frac{18}{d{_*}^2} + \frac{2.3348 - 1.7439\, \phi}{d{_*}^{0.5}} \right]^{-1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(0.5 \leq \phi \leq 1\)</span> and particle diameter <span class="math notranslate nohighlight">\(d_p\)</span> is an
+equivalent spherical diameter, the diameter of a sphere having the same volume
+as the particle. The relationship between <span class="math notranslate nohighlight">\(u_*\)</span> and <span class="math notranslate nohighlight">\(u_t\)</span> is given
+by</p>
+<div class="math notranslate nohighlight">
+\[u_* = u_t \left[ \frac{\rho{_g}^2}{g\, \mu\, (\rho_s - \rho_g)} \right]^{1/3}\]</div>
+<p>The terminal velocity of the particle can finally be determined by rearranging
+the above equation such that</p>
+<div class="math notranslate nohighlight">
+\[u_t = u_* \left[ \frac{g\, \mu\, (\rho_s - \rho_g)}{\rho{_g}^2} \right]^{1/3}\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -342,7 +296,7 @@ of a sphere having same volume as the particle.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ut</strong> (<em>float</em>) – Terminal velocity of particle [m/s]</p>
+<dd class="field-even"><p><strong>ut</strong> (<em>float</em>) – Terminal velocity of a particle [m/s]</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -360,7 +314,6 @@ of spherical and nonspherical particles. Powder Technology,
 </dl>
 </dd></dl>
 
-</div>
 </div>
 
 
