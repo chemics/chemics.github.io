@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Geldart particle classification &mdash; Chemics 19.8 documentation</title>
+  <title>Transport disengaging height &mdash; Chemics 19.8 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Minimum fluidization velocity" href="minimum_fluidization_velocity.html" />
-    <link rel="prev" title="Gas viscosity" href="gas_viscosity.html" /> 
+    <link rel="next" title="Transport velocity" href="transport_velocity.html" />
+    <link rel="prev" title="Terminal velocity" href="terminal_velocity.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,11 +99,11 @@
 <li class="toctree-l1"><a class="reference internal" href="gas_density.html">Gas density</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_thermal_conductivity.html">Gas thermal conductivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gas_viscosity.html">Gas viscosity</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Geldart particle classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geldart.html">Geldart particle classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="minimum_fluidization_velocity.html">Minimum fluidization velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="molecular_weight.html">Molecular weight</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="transport_disengaging_height.html">Transport disengaging height</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transport disengaging height</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wood_heat_capacity.html">Wood heat capacity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wood_thermal_conductivity.html">Wood thermal conductivity</a></li>
@@ -152,7 +152,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Geldart particle classification</li>
+      <li>Transport disengaging height</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -169,61 +169,93 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="geldart-particle-classification">
-<h1>Geldart particle classification<a class="headerlink" href="#geldart-particle-classification" title="Permalink to this headline">¶</a></h1>
-<p>The behavior of solids fluidized by gases can be classified into four groups
-using the density difference and mean particle diameter. This particle
-classification was introduced by D. Geldart in 1973.</p>
-<div class="section" id="module-chemics.geldart">
-<span id="source-code"></span><h2>Source code<a class="headerlink" href="#module-chemics.geldart" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="module-chemics.transport_disengaging_height">
+<span id="transport-disengaging-height"></span><h1>Transport disengaging height<a class="headerlink" href="#module-chemics.transport_disengaging_height" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="chemics.geldart.geldart_chart">
-<code class="sig-prename descclassname">chemics.geldart.</code><code class="sig-name descname">geldart_chart</code><span class="sig-paren">(</span><em class="sig-param">dp</em>, <em class="sig-param">rhog</em>, <em class="sig-param">rhos</em>, <em class="sig-param">dpmin=None</em>, <em class="sig-param">dpmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/geldart.html#geldart_chart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.geldart.geldart_chart" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creata a Matplotlib figure of the Geldart chart <a class="footnote-reference brackets" href="#id3" id="id1">1</a>. Data points for
-drawing the demarcation lines and regions were digitized from Figure 2 in
-<a class="footnote-reference brackets" href="#id4" id="id2">2</a>.</p>
+<dt id="chemics.transport_disengaging_height.tdh_chan">
+<code class="sig-prename descclassname">chemics.transport_disengaging_height.</code><code class="sig-name descname">tdh_chan</code><span class="sig-paren">(</span><em class="sig-param">ug</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/transport_disengaging_height.html#tdh_chan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.transport_disengaging_height.tdh_chan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate transport disengaging height (TDH) based on the Chan and Knowlton
+correlation <a class="footnote-reference brackets" href="#id3" id="id1">1</a>. This function is based on the equation presented in the
+Cahyadi <a class="footnote-reference brackets" href="#id4" id="id2">2</a> review article</p>
+<div class="math notranslate nohighlight">
+\[TDH = 0.85\,{U_g}^{1.2} (7.33 - 1.2 \log U_g)\]</div>
+<p>where <span class="math notranslate nohighlight">\(U_g\)</span> is superficial gas velocity. According to Table 1 in the
+Cahyadi review paper, this corrleation is relevant for Geldart A and B sand
+particles with a density of 2595 kg/m³, mean particle size of 37-420 µm,
+and an inner diameter fluidizing column of 0.3 m.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dp</strong> (<em>float</em>) – Sauter mean particle diameter [µm]</p></li>
-<li><p><strong>rhog</strong> (<em>float</em>) – Gas density [g/cm³]</p></li>
-<li><p><strong>rhos</strong> (<em>float</em>) – Particle density [g/cm³]</p></li>
-<li><p><strong>dpmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum particle size from particle size distribution [µm]</p></li>
-<li><p><strong>dpmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Max particle size from particle size distribution [µm]</p></li>
-</ul>
+<dd class="field-odd"><p><strong>ug</strong> (<em>float</em>) – Superficial gas velocity [m/s]</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Matplotlib figure.</em></p>
+<dd class="field-even"><p><strong>tdh</strong> (<em>float</em>) – Transport disengaging height [m]</p>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Particle diameter must be in microns (µm) and density in g/cm³.</p>
-</div>
-<p class="rubric">Examples</p>
-<p>For a single particle size</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geldart_figure</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>For a particle size with min and max sizes</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geldart_figure</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tdh_chan</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="go">1.7587</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>D. Geldart. Types of gas fluidization. Powder Technology,
-7, pp. 285-292, 1973.</p>
+<dd><p>I.H. Chan and T.M. Knowlton. The effect of system pressure on the
+transport disengaging height (TDH) above bubbling gas-fluidized beds.
+AIChE Symp. Ser., vol. 80, no. 241, 1984.</p>
 </dd>
 <dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>H.A. Khawaja. Review of the phenomenon of fluidization
-and its numerical modelling techniques. The International Journal of
-Multiphysics, vol. 9, no. 4, pp. 397-407, 2015.</p>
+<dd><p>Andy Cahyadi, Anthony H. Neumayer, Christine M. Hrenya, Ray A. Cocco,
+and Jia Wei Chew. Comparative study of Transport Disengaging Height (TDH)
+correlations in gas–solid fluidization. Powder Technology, vol. 275,
+pp. 220-238, 2015.</p>
 </dd>
 </dl>
 </dd></dl>
 
+<dl class="function">
+<dt id="chemics.transport_disengaging_height.tdh_horio">
+<code class="sig-prename descclassname">chemics.transport_disengaging_height.</code><code class="sig-name descname">tdh_horio</code><span class="sig-paren">(</span><em class="sig-param">dc</em>, <em class="sig-param">ug</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/transport_disengaging_height.html#tdh_horio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.transport_disengaging_height.tdh_horio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate transport disengaging height (TDH) based on the Horio et al.
+correlation <a class="footnote-reference brackets" href="#id7" id="id5">3</a>. This function is based on the equation presented in the
+Cahyadi <a class="footnote-reference brackets" href="#id8" id="id6">4</a> review article</p>
+<div class="math notranslate nohighlight">
+\[TDH = (2.7\, {D_c}^{-0.36} - 0.7) D_c\, \textrm{exp}(0.74\, U_g\, D_c^{-0.23})\]</div>
+<p>where <span class="math notranslate nohighlight">\(D_c\)</span> is inner diameter of the fluidizing column and
+<span class="math notranslate nohighlight">\(U_g\)</span> is superifical gas velocity. According to Table 1 in the
+Cahyadi review paper, this corrleation is relevant for Geldart group A
+particles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dc</strong> (<em>float</em>) – Inner diameter of fluidizing column [m]</p></li>
+<li><p><strong>ug</strong> (<em>float</em>) – Superficial gas velocity [m/s]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>tdh</strong> (<em>float</em>) – Transport disengaging height [m]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tdh_horio</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="go">0.563</span>
+</pre></div>
 </div>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dd><p>M. Horio, T. Shibata, and I. Muchi. Design criteria for the fluidized
+bed freeboard. 4th International Conference on Fluidization in Kashikojima,
+Japan, 1983.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id6">4</a></span></dt>
+<dd><p>Andy Cahyadi, Anthony H. Neumayer, Christine M. Hrenya, Ray A. Cocco,
+and Jia Wei Chew. Comparative study of Transport Disengaging Height (TDH)
+correlations in gas–solid fluidization. Powder Technology, vol. 275,
+pp. 220-238, 2015.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 
@@ -234,10 +266,10 @@ Multiphysics, vol. 9, no. 4, pp. 397-407, 2015.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="minimum_fluidization_velocity.html" class="btn btn-neutral float-right" title="Minimum fluidization velocity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="transport_velocity.html" class="btn btn-neutral float-right" title="Transport velocity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gas_viscosity.html" class="btn btn-neutral float-left" title="Gas viscosity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="terminal_velocity.html" class="btn btn-neutral float-left" title="Terminal velocity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
