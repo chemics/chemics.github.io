@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Chemics &mdash; Chemics 19.8 documentation</title>
+  <title>Chemics &mdash; Chemics 19.10 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                19.8
+                19.10
               </div>
             
           
@@ -92,6 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chemical_equation.html">Chemical equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devol_time.html">Devolatilization time</a></li>
@@ -189,11 +190,12 @@ with the pip package manager:</p>
 function to calculate the density of a gas based on its molecular weight,
 pressure, and temperature.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="kn">as</span> <span class="nn">cm</span>
+
 <span class="n">cm</span><span class="o">.</span><span class="n">rhog</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">170100</span><span class="p">,</span> <span class="mi">773</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>An example of calculating the terminal velocity of a particle according to the
-Haider and Levenspiel 1989 paper is shown below.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ut()</span></code> function calculates the terminal velocity of a particle
+according to the Haider and Levenspiel 1989 paper as shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="kn">as</span> <span class="nn">cm</span>
 
 <span class="c1"># Parameters</span>
@@ -205,6 +207,26 @@ Haider and Levenspiel 1989 paper is shown below.</p>
 
 <span class="c1"># Haider and Levenspiel terminal velocity [m/s]</span>
 <span class="n">ut_haider</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ut_haider</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">rhog</span><span class="p">,</span> <span class="n">rhos</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use the <code class="code docutils literal notranslate"><span class="pre">ChemicalEquation</span></code> class to get properties of the reactants and
+products from a given chemical equation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="kn">as</span> <span class="nn">cm</span>
+
+<span class="n">ce</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ChemicalEquation</span><span class="p">(</span><span class="s1">&#39;2 HCl + 2 Na -&gt; 2 NaCl + H2&#39;</span><span class="p">)</span>
+
+<span class="n">ce</span><span class="o">.</span><span class="n">balance</span>
+<span class="c1"># returns True for balanced equation</span>
+
+<span class="n">ce</span><span class="o">.</span><span class="n">rct_properties</span>
+<span class="c1"># returns a dataframe of the reactant properties</span>
+<span class="c1">#                HCl        Na</span>
+<span class="c1"># moles            2         2</span>
+<span class="c1"># species        HCl        Na</span>
+<span class="c1"># molwt       36.458     22.99</span>
+<span class="c1"># mass        72.916     45.98</span>
+<span class="c1"># molfrac        0.5       0.5</span>
+<span class="c1"># massfrac  0.613275  0.386725</span>
 </pre></div>
 </div>
 <p>More examples are available in the <a class="reference external" href="https://github.com/chemics/chemics-examples">chemics-examples</a> repository.</p>
@@ -219,6 +241,7 @@ given.</p>
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chemical_equation.html">Chemical equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devol_time.html">Devolatilization time</a></li>

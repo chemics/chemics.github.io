@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Wood heat capacity &mdash; Chemics 19.10 documentation</title>
+  <title>Chemical equation &mdash; Chemics 19.10 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Wood thermal conductivity" href="wood_thermal_conductivity.html" />
-    <link rel="prev" title="Transport velocity" href="transport_velocity.html" /> 
+    <link rel="next" title="Choking velocity" href="choking_velocity.html" />
+    <link rel="prev" title="Bubble velocity" href="bubble_velocity.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chemical_equation.html">Chemical equation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chemical equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversions.html">Conversions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="devol_time.html">Devolatilization time</a></li>
@@ -106,7 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="terminal_velocity.html">Terminal velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_disengaging_height.html">Transport disengaging height</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport_velocity.html">Transport velocity</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Wood heat capacity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wood_heat_capacity.html">Wood heat capacity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wood_thermal_conductivity.html">Wood thermal conductivity</a></li>
 </ul>
 
@@ -153,7 +153,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Wood heat capacity</li>
+      <li>Chemical equation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,49 +170,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-chemics.wood_heat_capacity">
-<span id="wood-heat-capacity"></span><h1>Wood heat capacity<a class="headerlink" href="#module-chemics.wood_heat_capacity" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="chemics.wood_heat_capacity.cp_wood">
-<code class="sig-prename descclassname">chemics.wood_heat_capacity.</code><code class="sig-name descname">cp_wood</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">tk</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/wood_heat_capacity.html#cp_wood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.wood_heat_capacity.cp_wood" title="Permalink to this definition">¶</a></dt>
-<dd><p>Heat capacity of wood based on moisture content and temperature</p>
-<div class="math notranslate nohighlight">
-\[c_{p,x} = \left(c_{p0} + c_{pw} \frac{x}{100}\right) / \left(1 + \frac{x}{100}\right) + A_c\]</div>
-<p>where <span class="math notranslate nohighlight">\(c_{p,x}\)</span> is heat capacity of wet wood [kJ/(kg K)],
-<span class="math notranslate nohighlight">\(c_{p0}\)</span> is heat capacity of dry wood [kJ/(kg K)], <span class="math notranslate nohighlight">\(c_{pw}\)</span> is
-heat capacity of water as 4.18 kJ/(kg K), <span class="math notranslate nohighlight">\(x\)</span> is moisture content [%],
-and <span class="math notranslate nohighlight">\(Ac\)</span> is an adjustment factor that accounts for the additional
-energy in the wood–water bond <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
-<p>The <span class="math notranslate nohighlight">\(c_{p0}\)</span> term is determined from</p>
-<div class="math notranslate nohighlight">
-\[c_{p0} = 0.1031 + 0.003867\,T\]</div>
-<p>where <span class="math notranslate nohighlight">\(T\)</span> is temperature [K]. The <span class="math notranslate nohighlight">\(A_c\)</span> term is calculated from</p>
-<div class="math notranslate nohighlight">
-\[A_c = x (b_1 + b_2 T + b_3 x)\]</div>
-<p>with <span class="math notranslate nohighlight">\(b_1 = -0.06191\)</span>, <span class="math notranslate nohighlight">\(b_2 = 2.36e\times10^{-4}\)</span>, and <span class="math notranslate nohighlight">\(b_3 = -1.33\times10^{-4}\)</span>.</p>
+  <div class="section" id="chemical-equation">
+<h1>Chemical equation<a class="headerlink" href="#chemical-equation" title="Permalink to this headline">¶</a></h1>
+<p>Use the ChemicalEquation class to determine properties of the reactants and
+products in a given chemical equation.</p>
+<span class="target" id="module-chemics.chemical_equation"></span><dl class="class">
+<dt id="chemics.chemical_equation.ChemicalEquation">
+<em class="property">class </em><code class="sig-prename descclassname">chemics.chemical_equation.</code><code class="sig-name descname">ChemicalEquation</code><span class="sig-paren">(</span><em class="sig-param">eq</em>, <em class="sig-param">names=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemics/chemical_equation.html#ChemicalEquation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemics.chemical_equation.ChemicalEquation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Properties of the reactants and products in a given chemical equation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>float</em>) – Moisture content [%]</p></li>
-<li><p><strong>tk</strong> (<em>float</em>) – Temperature [K]</p></li>
+<li><p><strong>eq</strong> (<em>str</em>) – Chemical equation such as A + B -&gt; C + D</p></li>
+<li><p><strong>names</strong> (<em>dict</em><em>, </em><em>optional</em>) – Names of unique species and their corresponding chemical formula.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>cp</strong> (<em>float</em>) – Heat capacity of wood [kJ/(kg K)]</p>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>eq</strong> (<em>str</em>) – Chemical equation such as A + B -&gt; C + D</p></li>
+<li><p><strong>names</strong> (<em>dict</em><em>, </em><em>optional</em>) – Names of unique species and their corresponding chemical formula.</p></li>
+<li><p><strong>rct_properties</strong> (<em>dataframe</em>) – Number of moles, chemical species, molecular weight, mass, mole
+fraction, and mass fraction for each reactant.</p></li>
+<li><p><strong>rct_elements</strong> (<em>dict</em>) – Total number of atomic elements on reactant side of the equation.</p></li>
+<li><p><strong>rct_moles</strong> (<em>float</em>) – Total number of moles on reactant side of the equation.</p></li>
+<li><p><strong>rct_mass</strong> (<em>float</em>) – Total mass of the reactants.</p></li>
+<li><p><strong>prod_properties</strong> (<em>dataframe</em>) – Number of moles, chemical species, molecular weight, mass, mole
+fraction, and mass fraction for each product.</p></li>
+<li><p><strong>prod_elements</strong> (<em>dict</em>) – Total number of atomic elements on product side of the equation.</p></li>
+<li><p><strong>prod_moles</strong> (<em>float</em>) – Total number of moles on product side of the equation.</p></li>
+<li><p><strong>prod_mass</strong> (<em>float</em>) – Total mass of the products.</p></li>
+<li><p><strong>balance</strong> (<em>bool</em>) – Balance between atomic elements in reactants and products.</p></li>
+</ul>
 </dd>
 </dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cp_wood</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">340</span><span class="p">)</span>
-<span class="go">1.91</span>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span> <span class="o">=</span> <span class="n">ChemicalEquation</span><span class="p">(</span><span class="s1">&#39;2 HCl + 2 Na -&gt; 2 NaCl + H2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">balance</span>
+<span class="go">True</span>
 </pre></div>
 </div>
-<p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Samuel V. Glass and Samuel L. Zelinka. Moisture Relations and
-Physical Properties of Wood. Ch. 4 in Wood Handbook, pp. 1-19, 2010.</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_properties</span>
+<span class="go">               HCl        Na</span>
+<span class="go">moles            2         2</span>
+<span class="go">species        HCl        Na</span>
+<span class="go">molwt       36.458     22.99</span>
+<span class="go">mass        72.916     45.98</span>
+<span class="go">molfrac        0.5       0.5</span>
+<span class="go">massfrac  0.613275  0.386725</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_properties</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;massfrac&#39;</span><span class="p">]</span>
+<span class="go">HCl    0.613275</span>
+<span class="go">Na     0.386725</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_elements</span>
+<span class="go">{&#39;H&#39;: 2.0, &#39;Cl&#39;: 2.0, &#39;Na&#39;: 2.0}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_moles</span>
+<span class="go">4.0</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_mass</span>
+<span class="go">118.896</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -225,10 +248,10 @@ Physical Properties of Wood. Ch. 4 in Wood Handbook, pp. 1-19, 2010.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="wood_thermal_conductivity.html" class="btn btn-neutral float-right" title="Wood thermal conductivity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="choking_velocity.html" class="btn btn-neutral float-right" title="Choking velocity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="transport_velocity.html" class="btn btn-neutral float-left" title="Transport velocity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="bubble_velocity.html" class="btn btn-neutral float-left" title="Bubble velocity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
