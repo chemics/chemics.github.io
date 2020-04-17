@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Minimum fluidization velocity &mdash; Chemics 19.10 documentation</title>
+  <title>Minimum fluidization velocity &mdash; Chemics 20.4 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.10
+                20.4
               </div>
             
           
@@ -92,6 +92,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biomass_composition.html">Biomass composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chemical_equation.html">Chemical equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
@@ -260,7 +261,7 @@ Default coefficients are set to ‘wenyu’.</p></li>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_coeff</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="s1">&#39;rich&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_coeff</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="s1">&#39;rich&#39;</span><span class="p">)</span>
 <span class="go">0.1192</span>
 </pre></div>
 </div>
@@ -296,7 +297,7 @@ particles. Refer to Equations 18 and 19 in Chapter 3 of Kunii and Levenspiel
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_ergun</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_ergun</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
 <span class="go">0.1488</span>
 </pre></div>
 </div>
@@ -333,12 +334,12 @@ Reynolds number &lt; 20 and for very large particles where Reynolds number &gt;
 </dl>
 <p class="rubric">Example</p>
 <p>For small Reynolds number where Re = 19</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_reynolds</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_reynolds</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
 <span class="go">0.1513</span>
 </pre></div>
 </div>
 <p>For large Reynolds number where Re = 1001</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_reynolds</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">umf_reynolds</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.46</span><span class="p">,</span> <span class="mf">3.6e-5</span><span class="p">,</span> <span class="mf">0.86</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
 <span class="go">1.1545</span>
 </pre></div>
 </div>
@@ -374,7 +375,7 @@ Butterworth-Heinemann, 2nd edition, 1991.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Gavin Wiggins
+        &copy; Copyright 2020, Gavin Wiggins
 
     </p>
   </div>

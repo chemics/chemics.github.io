@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Gas viscosity &mdash; Chemics 19.10 documentation</title>
+  <title>Gas viscosity &mdash; Chemics 20.4 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.10
+                20.4
               </div>
             
           
@@ -92,6 +92,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biomass_composition.html">Biomass composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chemical_equation.html">Chemical equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
@@ -233,23 +234,23 @@ information.</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;CH4&#39;</span><span class="p">,</span> <span class="mi">810</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;CH4&#39;</span><span class="p">,</span> <span class="mi">810</span><span class="p">)</span>
 <span class="go">234.21</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;C2Cl2F4&#39;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="n">cas</span><span class="o">=</span><span class="s1">&#39;374-07-2&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;C2Cl2F4&#39;</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="n">cas</span><span class="o">=</span><span class="s1">&#39;374-07-2&#39;</span><span class="p">)</span>
 <span class="go">314.90</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span>
 <span class="go">113.18</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="mi">773</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="mi">773</span><span class="p">)</span>
 <span class="go">363.82</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="mi">773</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="mi">773</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">(363.82, &#39;7727-37-9&#39;, 63.15, 1970.0, 4.46, 0.63, -0.00026, 5.41e-08)</span>
 </pre></div>
 </div>
@@ -288,7 +289,7 @@ each component.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_h2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_h2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
 <span class="gp">... </span><span class="n">mu_n2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
 <span class="gp">... </span><span class="n">mu_graham</span><span class="p">([</span><span class="n">mu_h2</span><span class="p">,</span> <span class="n">mu_n2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">])</span>
 <span class="go">207.37</span>
@@ -336,7 +337,7 @@ component.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_h2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu_h2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
 <span class="gp">... </span><span class="n">mu_n2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mu_gas</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span> <span class="mf">773.15</span><span class="p">)</span>
 <span class="gp">... </span><span class="n">mw_h2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mw</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">)</span>
 <span class="gp">... </span><span class="n">mw_n2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">mw</span><span class="p">(</span><span class="s1">&#39;N2&#39;</span><span class="p">)</span>
@@ -382,7 +383,7 @@ Report of Investigations 9456, 1993.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Gavin Wiggins
+        &copy; Copyright 2020, Gavin Wiggins
 
     </p>
   </div>

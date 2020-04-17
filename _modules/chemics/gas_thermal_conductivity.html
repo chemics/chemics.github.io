@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>chemics.gas_thermal_conductivity &mdash; Chemics 19.10 documentation</title>
+  <title>chemics.gas_thermal_conductivity &mdash; Chemics 20.4 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                19.10
+                20.4
               </div>
             
           
@@ -90,6 +90,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../biomass_composition.html">Biomass composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../bubble_velocity.html">Bubble velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../chemical_equation.html">Chemical equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../choking_velocity.html">Choking velocity</a></li>
@@ -231,7 +232,7 @@
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">formula</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Gas species </span><span class="si">{formula}</span><span class="s1"> is not available.&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Gas species </span><span class="si">{formula}</span><span class="s1"> is not available.&#39;</span><span class="p">)</span>
 
     <span class="n">cas</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">formula</span><span class="p">][</span><span class="s1">&#39;CAS No.&#39;</span><span class="p">]</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">formula</span><span class="p">][</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
@@ -244,7 +245,7 @@
 
     <span class="k">if</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">tmin</span> <span class="ow">or</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="n">tmax</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Temperature out of range. Applicable values are &#39;</span>
-                         <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;</span><span class="si">{tmin}</span><span class="s1"> - </span><span class="si">{tmax}</span><span class="s1"> K for </span><span class="si">{formula}</span><span class="s1"> gas.&#39;</span><span class="p">)</span>
+                         <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{tmin}</span><span class="s1"> - </span><span class="si">{tmax}</span><span class="s1"> K for </span><span class="si">{formula}</span><span class="s1"> gas.&#39;</span><span class="p">)</span>
 
     <span class="n">k_gas</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">temp</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
 
@@ -315,10 +316,10 @@
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">formula</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Gas species </span><span class="si">{formula}</span><span class="s1"> is not available.&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Gas species </span><span class="si">{formula}</span><span class="s1"> is not available.&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">formula</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">and</span> <span class="n">cas</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Multiple substances available for </span><span class="si">{formula}</span><span class="s1">.&#39;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Multiple substances available for </span><span class="si">{formula}</span><span class="s1">.&#39;</span>
                          <span class="o">+</span> <span class="s1">&#39; Include CAS number as a function parameter.&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">cas</span><span class="p">:</span>
@@ -334,7 +335,7 @@
 
     <span class="k">if</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">tmin</span> <span class="ow">or</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="n">tmax</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Temperature out of range. Applicable values are &#39;</span>
-                         <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;</span><span class="si">{tmin}</span><span class="s1"> - </span><span class="si">{tmax}</span><span class="s1"> K for </span><span class="si">{formula}</span><span class="s1"> gas.&#39;</span><span class="p">)</span>
+                         <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{tmin}</span><span class="s1"> - </span><span class="si">{tmax}</span><span class="s1"> K for </span><span class="si">{formula}</span><span class="s1"> gas.&#39;</span><span class="p">)</span>
 
     <span class="n">k_gas</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">temp</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
 
@@ -354,7 +355,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Gavin Wiggins
+        &copy; Copyright 2020, Gavin Wiggins
 
     </p>
   </div>

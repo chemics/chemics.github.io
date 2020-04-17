@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Chemics &mdash; Chemics 19.10 documentation</title>
+  <title>Chemics &mdash; Chemics 20.4 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                19.10
+                20.4
               </div>
             
           
@@ -91,6 +91,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biomass_composition.html">Biomass composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chemical_equation.html">Chemical equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
@@ -189,14 +190,14 @@ with the pip package manager:</p>
 <p>The example below imports the Chemics package then uses the <code class="code docutils literal notranslate"><span class="pre">rhog()</span></code>
 function to calculate the density of a gas based on its molecular weight,
 pressure, and temperature.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="kn">as</span> <span class="nn">cm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="k">as</span> <span class="nn">cm</span>
 
 <span class="n">cm</span><span class="o">.</span><span class="n">rhog</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">170100</span><span class="p">,</span> <span class="mi">773</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <code class="code docutils literal notranslate"><span class="pre">ut()</span></code> function calculates the terminal velocity of a particle
 according to the Haider and Levenspiel 1989 paper as shown below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="kn">as</span> <span class="nn">cm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="k">as</span> <span class="nn">cm</span>
 
 <span class="c1"># Parameters</span>
 <span class="n">dp</span> <span class="o">=</span> <span class="mf">0.00016</span>    <span class="c1"># particle diameter [m]</span>
@@ -211,7 +212,7 @@ according to the Haider and Levenspiel 1989 paper as shown below.</p>
 </div>
 <p>Use the <code class="code docutils literal notranslate"><span class="pre">ChemicalEquation</span></code> class to get properties of the reactants and
 products from a given chemical equation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="kn">as</span> <span class="nn">cm</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">chemics</span> <span class="k">as</span> <span class="nn">cm</span>
 
 <span class="n">ce</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ChemicalEquation</span><span class="p">(</span><span class="s1">&#39;2 HCl + 2 Na -&gt; 2 NaCl + H2&#39;</span><span class="p">)</span>
 
@@ -240,6 +241,7 @@ given.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biomass_composition.html">Biomass composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chemical_equation.html">Chemical equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
@@ -292,7 +294,7 @@ Chemics package.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Gavin Wiggins
+        &copy; Copyright 2020, Gavin Wiggins
 
     </p>
   </div>

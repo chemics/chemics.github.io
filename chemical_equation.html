@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Chemical equation &mdash; Chemics 19.10 documentation</title>
+  <title>Chemical equation &mdash; Chemics 20.4 documentation</title>
   
 
   
@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                19.10
+                20.4
               </div>
             
           
@@ -92,6 +92,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="atomic_elements.html">Atomic elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bed_expansion_factor.html">Bed expansion factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biomass_composition.html">Biomass composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bubble_velocity.html">Bubble velocity</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Chemical equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="choking_velocity.html">Choking velocity</a></li>
@@ -204,12 +205,12 @@ fraction, and mass fraction for each product.</p></li>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span> <span class="o">=</span> <span class="n">ChemicalEquation</span><span class="p">(</span><span class="s1">&#39;2 HCl + 2 Na -&gt; 2 NaCl + H2&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span> <span class="o">=</span> <span class="n">ChemicalEquation</span><span class="p">(</span><span class="s1">&#39;2 HCl + 2 Na -&gt; 2 NaCl + H2&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">balance</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_properties</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_properties</span>
 <span class="go">               HCl        Na</span>
 <span class="go">moles            2         2</span>
 <span class="go">species        HCl        Na</span>
@@ -219,20 +220,20 @@ fraction, and mass fraction for each product.</p></li>
 <span class="go">massfrac  0.613275  0.386725</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_properties</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;massfrac&#39;</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_properties</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;massfrac&#39;</span><span class="p">]</span>
 <span class="go">HCl    0.613275</span>
 <span class="go">Na     0.386725</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_elements</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_elements</span>
 <span class="go">{&#39;H&#39;: 2.0, &#39;Cl&#39;: 2.0, &#39;Na&#39;: 2.0}</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_moles</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_moles</span>
 <span class="go">4.0</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_mass</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ce</span><span class="o">.</span><span class="n">rct_mass</span>
 <span class="go">118.896</span>
 </pre></div>
 </div>
@@ -260,7 +261,7 @@ fraction, and mass fraction for each product.</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Gavin Wiggins
+        &copy; Copyright 2020, Gavin Wiggins
 
     </p>
   </div>
