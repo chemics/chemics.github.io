@@ -1,0 +1,17 @@
+a {
+    color: #EEC5F7;
+}
+
+a:hover {
+    color: #E3A5F0;
+    text-decoration: none;
+}
+
+body {
+    background-color: #68606B;
+    color: white;
+}
+
+img {
+    max-width: 200px;
+}
