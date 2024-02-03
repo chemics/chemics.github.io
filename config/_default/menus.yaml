@@ -7,9 +7,9 @@ main:
   - name: Home
     url: '#about'
     weight: 10
-  - name: Blog
-    url: http://dreamlands.top/
-    weight: 20
+#  - name: Blog
+#    url: http://dreamlands.top/
+#    weight: 20
   - name: Projects
     url: '#projects'
     weight: 40

@@ -123,8 +123,12 @@ social:
 highlight_name: true
 ---
 
+{{% callout note %}}
+This website is currently under construction. Some information might be outdated or wrong. Take care!
+{{% /callout %}}
+
 Hi, welcome to my homepage! I am Ziqi Wang, currently a Ph.D. student in theoretical chemistry at University of Pennsylvania. Before starting my Ph.D. program, I finished my undergraduate study and received BSc in Chemistry (chemical physics division) at University of Science and Technology of China (USTC).
 
-My research interests are mainly in quantum dynamics of atomic and molecular systems, with a special focus on energy and electron transfer in elementary chemical processes.
+My research interests are mainly in quantum dynamics of atomic and molecular systems, with a special focus on energy and electron transfer in elementary chemical processes. My interests outside academic are posted on my [Blog](http://dreamlands.top/).
 
-You can contact me by email or through [Contact](#contact) section.
+Feel free to contact me by email or through [Contact](#contact) section. Some notes on selected topics in theoretical chemistry can be found [Here](#notes).
