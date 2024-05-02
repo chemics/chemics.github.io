@@ -8,9 +8,5 @@ nav_order: 2
 ---
 
 <!-- _pages/publications.md -->
-<!-- <div class="publications"> -->
 
-<!-- \{\% bibliography \%\} -->
-Keep an eye!
-
-<!-- </div> -->
+Keep an eye for updates!
