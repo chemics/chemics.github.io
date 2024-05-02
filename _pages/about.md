@@ -26,5 +26,3 @@ I am Ziqi Wang, currently a Ph.D. student in theoretical chemistry at University
 My research interests are mainly in quantum dynamics of molecular systems, with a special focus on energy and electron transfer in elementary chemical processes. My interests outside academia are posted on my [Blog](http://dreamlands.top/).
 
 Feel free to contact me for academic discussion. Some notes on selected topics in theoretical chemistry can be found [Here](#notes).
-
-[filename](/cv.md ':include')
