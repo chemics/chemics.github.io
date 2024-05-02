@@ -1,7 +1,7 @@
 ---
-layout: redirect
+layout: page
 title: Blog
-permalink: http://blog.ziqiwang.net/
+permalink: redirect
 nav: true
 nav_order: 8
 ---

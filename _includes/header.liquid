@@ -59,6 +59,9 @@
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
           {% for p in sorted_pages %}
+            {% if p.permalink == "redirect" %}
+              <a herf="http://blog.ziqiwang.net/"></a>
+            {% endif %}
             {% if p.nav and p.autogen == null %}
               {% if p.dropdown %}
                 {% assign has_active_child = false %}
