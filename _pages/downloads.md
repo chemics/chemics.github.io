@@ -1,8 +1,8 @@
 ---
 layout: page
-permalink: /notes/
-title: Notes
-description: Notes on selected topics in theoretical chemistry.
+permalink: /downloads/
+title: Downloads
+description: Notes and other resources on selected topics in theoretical chemistry for download.
 nav: true
 nav_order: 6
 ---
@@ -11,4 +11,4 @@ nav_order: 6
 
 Organize your courses by years, topics, or universities, however you like! -->
 
-Notes to be uploaded.
+Files to be uploaded.
