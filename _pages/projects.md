@@ -9,4 +9,4 @@ display_categories: [Algorithm, Program]
 horizontal: true
 ---
 
-This page is under construction.
+Under construction.

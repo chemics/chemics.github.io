@@ -9,4 +9,4 @@ nav_order: 2
 
 <!-- _pages/publications.md -->
 
-Keep an eye for updates!
+Stay tuned!

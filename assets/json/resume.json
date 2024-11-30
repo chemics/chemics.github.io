@@ -14,9 +14,18 @@
       "location": "Philadelphia, PA",
       "url": "https://www.upenn.edu/",
       "area": "Theoretical Chemistry",
-      "studyType": "Ph.D. in Chemistry (Present)",
+      "studyType": "Ph.D. in Chemistry",
       "startDate": "2023-07-05",
-      "endDate": "2028-05-15"
+      "endDate": "2024-06-24"
+    },
+    {
+      "institution": "Boston University",
+      "location": "Boston, MA",
+      "url": "https://www.bu.edu/",
+      "area": "Theoretical Chemistry",
+      "studyType": "Ph.D. in Chemistry (Incoming)",
+      "startDate": "2025-01-21",
+      "endDate": "2029-12-31"
     }
   ],
   "interests": [
@@ -25,8 +34,7 @@
       "icon": "fa-solid fa-tag",
       "keywords": [
         "Quantum Dynamics",
-        "Quantum Simulation",
-        "Condensed Matter Theory"
+        "Semiclassical Dynamics"
       ]
     },
     {
@@ -34,8 +42,7 @@
       "icon": "fa-solid fa-tag",
       "keywords": [
         "Molecular Dynamics",
-        "Excited-state Electronic Structure",
-        "Electron/Energy Transfer"
+        "Energy Transfer"
       ]
     }
   ]
