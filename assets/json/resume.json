@@ -23,26 +23,26 @@
       "location": "Boston, MA",
       "url": "https://www.bu.edu/",
       "area": "Theoretical Chemistry",
-      "studyType": "Ph.D. in Chemistry (Incoming)",
+      "studyType": "Ph.D. in Chemistry",
       "startDate": "2025-01-21",
-      "endDate": "2029-12-31"
+      "endDate": "Present"
     }
   ],
   "interests": [
     {
-      "name": "Physics",
+      "name": "Method",
       "icon": "fa-solid fa-tag",
       "keywords": [
-        "Quantum Dynamics",
-        "Semiclassical Dynamics"
+        "Path integral dynamics",
+        "Open quantum systems"
       ]
     },
     {
-      "name": "Chemistry",
+      "name": "Application",
       "icon": "fa-solid fa-tag",
       "keywords": [
-        "Molecular Dynamics",
-        "Energy Transfer"
+        "Energy transfer",
+        "Nonequilibrium process"
       ]
     }
   ]

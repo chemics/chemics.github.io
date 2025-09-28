@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Homepage of Ziqi Wang # the website title (if blank, full name will be used instead)
+title: Ziqi Wang # the website title (if blank, full name will be used instead)
 first_name: Ziqi
 middle_name: 
 last_name: Wang
@@ -29,7 +29,7 @@ blogurl: https://blog.ziqiwang.net # url of my blog
 repo_theme_light: default # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_trophies:
-  enabled: true
+  enabled: false
   theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
   theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
 
@@ -107,7 +107,7 @@ youtube_id: # your youtube channel id (youtube.com/@<youtube_id>)
 zotero_username: # your zotero username
 
 contact_note: >
-  Feel free to reach out for academic discussion, or, just for fun!
+  Feel free to reach out for academic discussion, or, just for a coffee talk!
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
